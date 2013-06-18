@@ -1,0 +1,84 @@
+%% itecreport.ins
+%%
+%% Copyright (C) 2013 by Xu Cheng <xucheng@me.com>
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is Xu Cheng.
+%%
+%% This work consists of the files itecreport.dtx and itecreport.ins
+%% and the derived file itecreport-zh.cls, itecreport-en.cls and 
+%% along with its documnet and example files.
+%%
+\input docstrip.tex
+\keepsilent
+\askforoverwritefalse
+
+\preamble
+
+This is a generated file.
+
+Copyright (C) 2013 by Xu Cheng <xucheng@me.com> 
+
+This work may be distributed and/or modified under the
+conditions of the LaTeX Project Public License, either version 1.3
+of this license or (at your option) any later version.
+The latest version of this license is in
+  http://www.latex-project.org/lppl.txt
+and version 1.3 or later is part of all distributions of LaTeX
+version 2005/12/01 or later. 
+
+This work has the LPPL maintenance status `maintained'.  
+
+The Current Maintainer of this work is Xu Cheng. 
+
+This work consists of the files itecreport.dtx and itecreport.ins
+and the derived file itecreport-zh.cls, itecreport-en.cls and 
+along with its documnet and example files.
+
+\endpreamble
+
+
+\generate{
+    % \usedir{source/latex/itecreport}
+    \usedir{tex/latex/itecreport}
+    \file{\jobname-zh.cls}{\from{\jobname.dtx}{class,class-zh}}
+    \file{\jobname-en.cls}{\from{\jobname.dtx}{class,class-en}}
+    \usedir{doc/latex/itecreport}
+    \file{\jobname-zh-doc.tex}{\from{\jobname.dtx}{doc,doc-zh}}
+    \file{\jobname-en-doc.tex}{\from{\jobname.dtx}{doc,doc-en}}
+    \usedir{doc/latex/itecreport/example}
+    \file{\jobname-zh-example.tex}{\from{\jobname.dtx}{example-zh}}
+    \file{\jobname-en-example.tex}{\from{\jobname.dtx}{example-en}}
+    \nopreamble\nopostamble
+    \usedir{doc/latex/itecreport/example}
+    \file{\jobname-ref-example.bib}{\from{\jobname.dtx}{example-bib}}
+    \usedir{doc/latex/itecreport}
+    \file{README.md}{\from{\jobname.dtx}{readme}}
+}
+
+\Msg{*********************************************************}
+\Msg{*}
+\Msg{* To finish the installation you have to move the}
+\Msg{* following file into a directory searched by TeX:}
+\Msg{*}
+\Msg{* \space\space itecreport-zh.cls if you write in Chinese.}
+\Msg{* \space\space itecreport-en.cls if you write in English.}
+\Msg{*}
+\Msg{* To produce the documentation and example compile the file}
+\Msg{* itecreport-*-doc.tex and itecreport-*-example.tex}
+\Msg{* through LuaLaTeX.}
+\Msg{*}
+\Msg{* Happy TeXing!}
+\Msg{*}
+\Msg{*********************************************************}
+
+\endbatchfile
