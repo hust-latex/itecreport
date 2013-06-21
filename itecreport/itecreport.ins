@@ -1,3 +1,4 @@
+% !TEX program  = LuaLaTeX
 %% itecreport.ins
 %%
 %% Copyright (C) 2013 by Xu Cheng <xucheng@me.com>
@@ -18,7 +19,7 @@
 %% and the derived file itecreport-zh.cls, itecreport-en.cls and 
 %% along with its documnet and example files.
 %%
-\input docstrip.tex
+\input l3docstrip.tex
 \keepsilent
 \askforoverwritefalse
 
@@ -48,19 +49,15 @@ along with its documnet and example files.
 
 
 \generate{
-    % \usedir{source/latex/itecreport}
     \usedir{tex/latex/itecreport}
     \file{\jobname-zh.cls}{\from{\jobname.dtx}{class,class-zh}}
     \file{\jobname-en.cls}{\from{\jobname.dtx}{class,class-en}}
-    \usedir{doc/latex/itecreport}
-    \file{\jobname-zh-doc.tex}{\from{\jobname.dtx}{doc,doc-zh}}
-    \file{\jobname-en-doc.tex}{\from{\jobname.dtx}{doc,doc-en}}
     \usedir{doc/latex/itecreport/example}
     \file{\jobname-zh-example.tex}{\from{\jobname.dtx}{example-zh}}
     \file{\jobname-en-example.tex}{\from{\jobname.dtx}{example-en}}
     \nopreamble\nopostamble
     \usedir{doc/latex/itecreport/example}
-    \file{\jobname-ref-example.bib}{\from{\jobname.dtx}{example-bib}}
+    \file{ref-example.bib}{\from{\jobname.dtx}{example-bib}}
     \usedir{doc/latex/itecreport}
     \file{README.md}{\from{\jobname.dtx}{readme}}
 }
