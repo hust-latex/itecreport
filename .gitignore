@@ -35,6 +35,7 @@
 itecreport/*.cls
 itecreport/*.tex
 itecreport/*.bib
+itecreport/*.eps
 itecreport/*.md
 
 # For Sublime Text
