@@ -1,0 +1,330 @@
+% \iffalse meta-comment
+% !TEX program  = LuaLaTeX
+%
+% itecreport.dtx
+%
+% Copyright (C) 2013 by Xu Cheng <xucheng@me.com>
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+% 
+% The Current Maintainer of this work is Xu Cheng.
+%
+% This work consists of the files itecreport.dtx and itecreport.ins
+% and the derived file itecreport-zh.cls, itecreport-en.cls and 
+% along with its documnet and example files.
+%
+% \fi
+%
+% \iffalse
+%<*driver>
+\ProvidesFile{itecreport.dtx}
+%</driver>
+%
+%<class>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+%<class-zh>\ProvidesClass{itecreport-zh}
+%<class-en>\ProvidesClass{itecreport-en}
+%<*class>
+[2013/06/01 v1.0 A Report Template for Internet Technology and Engineering R&D Center of HUST]
+%</class>
+%
+%<*driver>
+\documentclass[12pt,a4paper,numbered,full]{l3doc}
+
+\usepackage{fontspec}
+\setmainfont[Ligatures={Common,TeX}]{Tex Gyre Pagella}
+\setsansfont[Ligatures={Common,TeX}]{Droid Sans}
+\setmonofont{CMU Typewriter Text}
+\defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+
+\usepackage{luatexja-fontspec}
+\setmainjfont[BoldFont={AdobeHeitiStd-Regular},ItalicFont={AdobeKaitiStd-Regular}]{AdobeSongStd-Light}
+\setsansjfont{AdobeKaitiStd-Regular}
+\defaultjfontfeatures{JFM=kaiming}
+\newjfontfamily\KAI{AdobeKaitiStd-Regular}
+\newjfontfamily\FANGSONG{AdobeFangsongStd-Regular}
+
+\usepackage{interfaces-LaTeX}
+\changefont{linespread=1.2}
+
+\usepackage[top=1.2in,bottom=1.2in,left=1.5in,right=1in]{geometry}
+\pdfpagewidth=\paperwidth
+\pdfpageheight=\paperheight
+
+\usepackage{color}
+\usepackage[table]{xcolor}
+
+\definecolor{hyperreflinkred}{RGB}{128,23,31}
+\hypersetup{
+  unicode,
+  bookmarksnumbered=true,
+  bookmarksopen=true,
+  bookmarksopenlevel=2,
+  breaklinks=true,
+  colorlinks=true,
+  allcolors=hyperreflinkred,
+  linktoc=page,
+  plainpages=false,
+  pdfpagelabels=true,
+  pdfstartview={XYZ null null 1}
+}
+
+\usepackage{indentfirst}
+\setlength{\parindent}{2em}
+
+\usepackage{titlesec,titletoc}
+\usepackage[titles]{tocloft}
+\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{3}
+
+\usepackage{enumitem}
+\setlist{noitemsep,partopsep=0pt,topsep=.8ex}
+\setlist[1]{labelindent=\parindent}
+\setlist[enumerate,1]{label=\arabic*.}
+\setlist[enumerate,2]{label*=\arabic*}
+\setlist[enumerate,3]{label=\emph{\alph*})}
+
+\AtBeginEnvironment{verbatim}{\small}
+\let\AltMacroFont\MacroFont
+
+\usepackage{metalogo}
+\usepackage{notes}
+\usepackage{tabularx}
+
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\makeatletter
+\newskip\ITEC@oldcftbeforepartskip
+\ITEC@oldcftbeforepartskip=\cftbeforepartskip
+\newskip\ITEC@oldcftbeforesecskip
+\ITEC@oldcftbeforesecskip=\cftbeforesecskip
+\let\ITEC@oldl@part\l@part
+\let\ITEC@oldl@section\l@section
+\let\ITEC@oldl@subsection\l@subsection
+\def\l@part#1#2{\ITEC@oldl@part{#1}{#2}\cftbeforepartskip=3pt}
+\def\l@section#1#2{\ITEC@oldl@section{#1}{#2}\cftbeforepartskip=\ITEC@oldcftbeforepartskip\cftbeforesecskip=3pt}
+\def\l@subsection#1#2{\ITEC@oldl@subsection{#1}{#2}\cftbeforesecskip=\ITEC@oldcftbeforesecskipt}
+\makeatother
+
+\titleformat{\part}
+  {
+    \bfseries           
+    \centering               
+    \changefont{size=18pt}  
+  }
+  {\thepart}
+  {1em}
+  {}
+\let\oldpart\part
+\def\part#1{\newpage\oldpart{#1}}
+
+\def\orvar{\textnormal{|}}
+
+\IndexPrologue
+ {
+  \part{Index}
+  The~italic~numbers~denote~the~pages~where~the~
+  corresponding~entry~is~described,~
+  numbers~underlined~point~to~the~definition,~
+  all~others~indicate~the~places~where~it~is~used.
+ }
+
+\EnableCrossrefs
+\CodelineIndex
+\RecordChanges
+
+\begin{document}
+\DocInput{itecreport.dtx}
+\end{document}
+%</driver>
+% \fi
+%
+% \CheckSum{0}
+%
+% \iffalse
+%<*!(readme|example-bib)>
+% \fi
+%% \CharacterTable
+%% {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%%  Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%%  Digits        \0\1\2\3\4\5\6\7\8\9
+%%  Exclamation   \!     Double quote  \"     Hash (number) \#
+%%  Dollar        \$     Percent       \%     Ampersand     \&
+%%  Acute accent  \'     Left paren    \(     Right paren   \)
+%%  Asterisk      \*     Plus          \+     Comma         \,
+%%  Minus         \-     Point         \.     Solidus       \/
+%%  Colon         \:     Semicolon     \;     Less than     \<
+%%  Equals        \=     Greater than  \>     Question mark \?
+%%  Commercial at \@     Left bracket  \[     Backslash     \\
+%%  Right bracket \]     Circumflex    \^     Underscore    \_
+%%  Grave accent  \`     Left brace    \{     Vertical bar  \|
+%%  Right brace   \}     Tilde         \~}
+% \iffalse
+%</!(readme|example-bib)>
+% \fi
+%
+% \changes{v1.0}{2013/06/01}{Initial version}
+%
+% \GetFileInfo{itecreport.dtx}
+%
+% \DoNotIndex{}
+%
+% \title{A Report Template for Internet Technology and Engineering R\&D Center of HUST: the \textsf{itecreport-zh} and \textsf{itecreport-en} class
+% \thanks{This document corresponds to \textsf{itecreport-zh.cls} and \textsf{itecreport-en.cls} ~\fileversion, dated \filedate.}}
+% \author{Xu Cheng \\ \texttt{xucheng@me.com}}
+% \date{2013/06/01}
+%
+% \maketitle
+% \tableofcontents
+%
+% \part{Introduction}
+%
+% \section{Introduction}
+% This is a report template for \href{http://itec.hust.edu.cn/}{Internet Technology and Engineering R\&D Center of HUST}. This template is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+%
+% The whole project is published under LPPL v1.3 License at \href{https://github.com/michael911009/itecreport}{GitHub}.
+%
+% This template provides two class files which correspond to Chinese version and English version template separately: \textsf{itecreport-zh} and \textsf{itecreport-en}.
+%
+% \section{Installation}
+%
+% \part{中文模板使用方法}
+%
+% \part{Usage of English Version Template}
+%
+%
+% \StopEventually{
+%  \begingroup
+%  \hypersetup{bookmarksopenlevel=0}
+%  \PrintIndex
+%  \endgroup
+% }
+%
+% \part{Implementation}
+%
+%    \begin{macrocode}
+%<*class>
+\RequirePackage{ifthen}
+%    \end{macrocode}
+%
+% Process options and load class book.
+%    \begin{macrocode}
+\RequirePackage{xkeyval}
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
+\ProcessOptionsX
+\LoadClass[12pt, a4paper, openany]{book}
+%    \end{macrocode}
+%
+% Check engine, only \XeLaTeX and \LuaLaTeX are supported.
+%    \begin{macrocode}
+\RequirePackage{iftex}
+\ifXeTeX\else
+  \ifLuaTeX\else
+    \begingroup
+      \errorcontextlines=-1\relax
+      \newlinechar=10\relax
+      \errmessage{^^J
+      *******************************************************^^J
+      * XeTeX or LuaTeX is required to compile this document.^^J
+      * Sorry!^^J
+      *******************************************************^^J
+      }%
+    \endgroup
+  \fi
+\fi
+%    \end{macrocode}
+%
+% Set font used in document. Firstly, it's font setting for English version template (\textsf{itecreport-en}). We use \href{http://mirrors.ctan.org/help/Catalogue/entries/fontspec}{\texttt{fontspec}} package to handle font. We choose \textsf{Tex Gyre Termes}, \textsf{Droid Sans} and \textsf{CMU Typewriter Text} as document main font, sans font and mono font.
+%    \begin{macrocode}
+%<*class-en>
+\RequirePackage{fontspec}
+\setmainfont[
+  Ligatures={Common,TeX},
+  Extension=.otf,
+  UprightFont=*-regular,
+  BoldFont=*-bold,
+  ItalicFont=*-italic,
+  BoldItalicFont=*-bolditalic]{texgyretermes}
+\setsansfont[Ligatures={Common,TeX}]{Droid Sans}
+\setmonofont{CMU Typewriter Text}
+\defaultfontfeatures{Mapping=tex-text}
+%</class-en>
+%    \end{macrocode}
+%
+% Below is the font setting for Chinese version template (\textsf{itecreport-zh}). The Chinese version template chooses the same English font as English version. We use  \href{http://mirrors.ctan.org/help/Catalogue/entries/xecjk}{\texttt{xecjk}} package (for \XeLaTeX) or \href{http://mirrors.ctan.org/help/Catalogue/entries/luatexja}{\texttt{luatex-ja}} package (for \LuaLaTeX, recommend) to handle Chinese font.
+%    \begin{macrocode}
+%<*class-zh>
+\ifXeTeX  % XeTeX下使用fontspec + xeCJK处理字体
+  % 英文字体
+  \RequirePackage{fontspec}
+  \RequirePackage{xunicode}
+  \setmainfont[
+    Ligatures={Common,TeX},
+    Extension=.otf,
+    UprightFont=*-regular,
+    BoldFont=*-bold,
+    ItalicFont=*-italic,
+    BoldItalicFont=*-bolditalic]{texgyretermes}
+  \setsansfont[Ligatures={Common,TeX}]{Droid Sans}
+  \setmonofont{CMU Typewriter Text}
+  \defaultfontfeatures{Mapping=tex-text}
+  % 中文字体
+  \RequirePackage[CJKmath]{xeCJK}
+  \setCJKmainfont[
+   BoldFont={Adobe Heiti Std},
+   ItalicFont={Adobe Kaiti Std}]{Adobe Song Std}
+  \setCJKsansfont{Adobe Kaiti Std}
+  \setCJKmonofont{Adobe Fangsong Std}
+  \xeCJKsetup{PunctStyle=kaiming}
+
+  \newCJKfontfamily\HEI{Adobe Heiti Std}
+  \newCJKfontfamily\KAI{Adobe Kaiti Std}
+  \newCJKfontfamily\FANGSONG{Adobe Fangsong Std}
+  \newcommand{\hei}[1]{{\HEI #1}}
+  \newcommand{\kai}[1]{{\KAI #1}}
+  \newcommand{\fangsong}[1]{{\FANGSONG #1}}
+\else\fi
+
+\ifLuaTeX  % LuaTeX下使用luatex-ja处理字体 [推荐]
+  \RequirePackage{luatexja-fontspec}
+  % 英文字体
+  \setmainfont[Ligatures={Common,TeX}]{Tex Gyre Termes}
+  \setsansfont[Ligatures={Common,TeX}]{Droid Sans}
+  \setmonofont{CMU Typewriter Text}
+  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+  % 中文字体
+  \setmainjfont[
+   BoldFont={AdobeHeitiStd-Regular},
+   ItalicFont={AdobeKaitiStd-Regular}]{AdobeSongStd-Light}
+  \setsansjfont{AdobeKaitiStd-Regular}
+  \defaultjfontfeatures{JFM=kaiming}
+
+  \newjfontfamily\HEI{AdobeHeitiStd-Regular}
+  \newjfontfamily\KAI{AdobeKaitiStd-Regular}
+  \newjfontfamily\FANGSONG{AdobeFangsongStd-Regular}
+  \newcommand{\hei}[1]{{\jfontspec{AdobeHeitiStd-Regular} #1}}
+  \newcommand{\kai}[1]{{\jfontspec{AdobeKaitiStd-Regular} #1}}
+  \newcommand{\fangsong}[1]{{\jfontspec{AdobeFangsongStd-Regular} #1}}
+\else\fi
+%    \end{macrocode}
+%
+% Chinese number for \textsf{itecreport-zh} using \href{http://mirrors.ctan.org/help/Catalogue/entries/zhnumber}{\texttt{zhnumber}}.
+%    \begin{macrocode}
+\RequirePackage{zhnumber}
+\def\CJKnumber#1{\zhnumber{#1}} % 兼容CJKnumb
+%</class-zh>
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+%</class>
+%    \end{macrocode}
+%
+% \Finale
+%
+\endinput
