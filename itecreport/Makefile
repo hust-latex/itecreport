@@ -21,7 +21,8 @@ all:class doc example
 unpack:itecreport.dtx itecreport.ins
 	@$(TEX) itecreport.ins
 
-%.cls %.tex %.md %.bib %.eps:unpack
+%.cls %.tex %.md %.bib %.eps:itecreport.dtx itecreport.ins
+	@$(TEX) itecreport.ins
 
 class:itecreport-zh.cls itecreport-en.cls
 
@@ -37,12 +38,11 @@ example:example-zh example-en
 example-zh:itecreport-zh-example.pdf
 example-en:itecreport-en-example.pdf
 
-itecreport-%-example.pdf:itecreport-%-example.tex itecreport-%.cls  ref-example.bib fig-example.eps
+itecreport-zh-example.pdf itecreport-en-example.pdf:%-example.pdf:%-example.tex %.cls ref-example.bib fig-example.eps
 	@$(TEX) $(<F)
 	@$(BIBTEX) $(basename $(<F))
 	@$(TEX) $(<F)
 	@$(TEX) $(<F)
-
 
 clean:
 	-$(RM) *.acn *.acr *.alg *.aux *.bbl \
@@ -63,4 +63,4 @@ reallyclean:
 			*.vrb *.xdy *.tdo \
 			*.cls *.tex *.md *.bib *.eps
 
-.PHONY:all class doc example example-zh example-en clean reallyclean
+.PHONY:all unpack class doc example example-zh example-en clean reallyclean FORCE
