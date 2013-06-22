@@ -776,19 +776,43 @@
 %
 % \section{Localization}
 % Chinese localization.
+% \footnote{The |autorefname| Reference:\url{http://tex.stackexchange.com/questions/52410/how-to-use-the-command-autoref-to-implement-the-same-effect-when-use-the-comman}}
 %    \begin{macrocode}
 %<*class-zh>
 \def\indexname{索引}
 \def\figurename{图}
 \def\tablename{表}
-\def\ITEC@listfigurename{插图索引}
-\def\ITEC@listtablename{表格索引}
 \def\algorithmcfname{算法}
 \def\listingscaption{代码}
 \def\bibname{参考文献}
 \def\contentsname{目\hspace{1em}录}
 \def\contentsnamenospace{目录}
 \def\appendixname{附录}
+\def\ITEC@listfigurename{插图索引}
+\def\ITEC@listtablename{表格索引}  
+\def\equationautorefname{公式}
+\def\footnoteautorefname{脚注}
+\def\itemautorefname~#1\null{第~#1~项\null}
+\def\figureautorefname{图}
+\def\tableautorefname{表}
+\def\appendixautorefname{附录}
+\def\chapterautorefname~#1\null{第\zhnumber{#1}章\null}
+\def\sectionautorefname~#1\null{#1~小节\null}
+\def\subsectionautorefname~#1\null{#1~小节\null}
+\def\subsubsectionautorefname~#1\null{#1~小节\null}
+\def\FancyVerbLineautorefname~#1\null{第~#1~行\null}
+\def\pageautorefname~#1\null{第~#1~页\null}
+\def\lstlistingautorefname{代码}
+\def\algorithmautorefname{算法}
+\def\definitionautorefname{定义}
+\def\propositionautorefname{命题}
+\def\lemmaautorefname{引理}
+\def\theoremautorefname{定理}
+\def\axiomautorefname{公理}
+\def\corollaryautorefname{推论}
+\def\exerciseautorefname{练习}
+\def\exampleautorefname{例}
+\def\proofautorefname{证明}
 %</class-zh>
 %    \end{macrocode}
 %
@@ -796,7 +820,30 @@
 %    \begin{macrocode}
 %<*class-en>
 \def\ITEC@listfigurename{List of Figures}
-\def\ITEC@listtablename{List of Tables}
+\def\ITEC@listtablename{List of Tables}  
+\def\equationautorefname{Equation}
+\def\footnoteautorefname{Footnote}
+\def\itemautorefname{Item}
+\def\figureautorefname{Figure}
+\def\tableautorefname{Table}
+\def\appendixautorefname{Appendix}
+\def\chapterautorefname{Chapter}
+\def\sectionautorefname{Section}
+\def\subsectionautorefname{Subsection}
+\def\subsubsectionautorefname{Subsubsection}
+\def\FancyVerbLineautorefname{Line}
+\def\pageautorefname{Page}
+\def\lstlistingautorefname{Code Fragment}
+\def\algorithmautorefname{Algorithm}
+\def\definitionautorefname{Definition}
+\def\propositionautorefname{Proposition}
+\def\lemmaautorefname{Lemma}
+\def\theoremautorefname{Theorem}
+\def\axiomautorefname{Axiom}
+\def\corollaryautorefname{Corollary}
+\def\exerciseautorefname{Exercise}
+\def\exampleautorefname{Example}
+\def\proofautorefname{Proof}
 %</class-en>
 %    \end{macrocode}
 %
