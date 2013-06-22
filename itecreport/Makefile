@@ -37,7 +37,7 @@ example:example-zh example-en
 example-zh:itecreport-zh-example.pdf
 example-en:itecreport-en-example.pdf
 
-itecreport-%-example.pdf:itecreport-%-example.tex itecreport-%.cls  ref-example.bib
+itecreport-%-example.pdf:itecreport-%-example.tex itecreport-%.cls  ref-example.bib fig-example.eps
 	@$(TEX) $(<F)
 	@$(BIBTEX) $(basename $(<F))
 	@$(TEX) $(<F)
