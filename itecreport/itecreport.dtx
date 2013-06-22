@@ -853,6 +853,127 @@
 \def\listtablename{\ITEC@listtablename}
 %    \end{macrocode}
 %
+% \section{Variables Setting}
+% \begin{macro}{\zhtitle,\entitle,\title}
+% Commands to set the title.
+%    \begin{macrocode}
+%<*class-zh>
+\def\zhtitle#1{\gdef\ITEC@zhtitle{#1}\hypersetup{pdftitle={#1}}}
+\def\entitle#1{\gdef\ITEC@entitle{#1}}
+\def\title#1#2{\zhtitle{#1}\entitle{#2}}
+\title{}{}
+%</class-zh>
+%<*class-en>
+\def\title#1{\gdef\ITEC@entitle{#1}\hypersetup{pdftitle={#1}}}
+\title{}
+%</class-en>
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\zhauthor,\enauthor,\author}
+% Commands to set the author.
+%    \begin{macrocode}
+%<*class-zh>
+\def\zhauthor#1{\gdef\ITEC@zhauthor{#1}\hypersetup{pdfauthor={#1}}}
+\def\enauthor#1{\gdef\ITEC@enauthor{#1}}
+\def\author#1#2{\zhauthor{#1}\enauthor{#2}}
+\author{}{}
+%</class-zh>
+%<*class-en>
+\def\author#1{\gdef\ITEC@enauthor{#1}\hypersetup{pdfauthor={#1}}}
+\author{}
+%</class-en>
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\date,\zhdateformat,\endateformat,\dateformat}
+% A command to set the date and several commands to display date.
+%    \begin{macrocode}
+\def\date#1#2#3{
+  \setdate{#1}{#2}{#3}
+}
+\setdatetoday
+%<*class-zh>
+\def\zhdateformat{~\thedateyear~年~\thedatemonth~月~\thedateday~日}
+\def\endateformat{\datedate}
+%</class-zh>
+%<*class-en>
+\def\endateformat{\datedate}
+\let\dateformat\endateformat
+%</class-en>
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\zhsupervisor,\ensupervisor,\supervisor}
+% Commands to set the supervisor.
+%    \begin{macrocode}
+%<*class-zh>
+\def\zhsupervisor#1{\gdef\ITEC@zhsupervisor{#1}}
+\def\ensupervisor#1{\gdef\ITEC@ensupervisor{#1}}
+\def\supervisor#1#2{\zhsupervisor{#1}\ensupervisor{#2}}
+\supervisor{}{}
+%</class-zh>
+%<*class-en>
+\def\supervisor#1{\gdef\ITEC@ensupervisor{#1}}
+\supervisor{}
+%</class-en>
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\zhabstract,\enabstract,\abstract}
+% Commands to set the abstract.
+%    \begin{macrocode}
+%<*class-zh>
+\long\def\zhabstract#1{\long\gdef\ITEC@zhabstract{#1}}
+\long\def\enabstract#1{\long\gdef\ITEC@enabstract{#1}}
+\long\def\abstract#1#2{\zhabstract{#1}\enabstract{#2}}
+\abstract{}{}
+%</class-zh>
+%<*class-en>
+\long\def\abstract#1{\long\gdef\ITEC@enabstract{#1}}
+\abstract{}
+%</class-en>
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\zhkeywords,\enkeywords,\keywords}
+% Commands to set the keywords.
+%    \begin{macrocode}
+%<*class-zh>
+\def\zhkeywords#1{\gdef\ITEC@zhkeywords{#1}\hypersetup{pdfkeywords={#1}}}
+\def\enkeywords#1{\gdef\ITEC@enkeywords{#1}}
+\def\keywords#1#2{\zhkeywords{#1}\enkeywords{#2}}
+\keywords{}{}
+%</class-zh>
+%<*class-en>
+\def\keywords#1{\gdef\ITEC@enkeywords{#1}\hypersetup{pdfkeywords={#1}}}
+\keywords{}
+%</class-en>
+%    \end{macrocode}
+% \end{macro}
+%
+% \section{Specical Page}
+% \begin{macro}{\frontmatter,\mainmatter,\backmatter}
+%    \begin{macrocode}
+\def\frontmatter{
+  \clearpage
+  \@mainmatterfalse
+  \pagenumbering{Roman}
+}
+\def\mainmatter{
+  \clearpage
+  \@mainmattertrue
+  \pagenumbering{arabic}
+}
+\def\backmatter{
+  \clearpage
+  \@mainmatterfalse
+  \settocdepth{chapter}
+  \hypersetup{bookmarksopenlevel=0}
+}
+%    \end{macrocode}
+% \end{macro}
+%
 %
 %    \begin{macrocode}
 %</class>
