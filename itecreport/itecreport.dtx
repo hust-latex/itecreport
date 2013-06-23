@@ -175,7 +175,7 @@
 %
 % \GetFileInfo{itecreport.dtx}
 %
-% \DoNotIndex{}
+% \DoNotIndex{\#,\$,\%,\&,\@,\\,\{,\},\^,\_,\~,\ ,\,}
 %
 % \title{A Report Template for Internet Technology and Engineering R\&D Center of HUST: the \textsf{itecreport-zh} and \textsf{itecreport-en} class
 % \thanks{This document corresponds to \textsf{itecreport-zh.cls} and \textsf{itecreport-en.cls} ~\fileversion, dated \filedate.}}
@@ -440,7 +440,8 @@
   plainpages=false,
   pdfpagelabels=true,
   pdfstartview={XYZ null null 1},
-  pdfinfo={Template.Info={ITECthesis.cls 2013/06/01, Copyright (C) 2013 by Xu Cheng, https://github.com/michael911009/ITECThesis}}
+%<class-zh>pdfinfo={Template.Info={itecreport-zh.cls 2013/06/01, Copyright (C) 2013 by Xu Cheng, https://github.com/michael911009/itecreport}}
+%<class-en>pdfinfo={Template.Info={itecreport-en.cls 2013/06/01, Copyright (C) 2013 by Xu Cheng, https://github.com/michael911009/itecreport}}
 }
 %    \end{macrocode}
 %
@@ -489,6 +490,7 @@
 \RequirePackage{etoolbox}
 \RequirePackage{appendix}
 \RequirePackage[titles]{tocloft}
+\RequirePackage{xstring}
 %    \end{macrocode}
 %
 % \section{Style Setting}
@@ -726,7 +728,7 @@
 % \subsection{TOC Style}
 % TOC depth.
 %    \begin{macrocode}
-\setcounter{tocdepth}{1}
+\setcounter{tocdepth}{2}
 %    \end{macrocode}
 %
 % TOC right margin.
@@ -739,10 +741,14 @@
 %    \begin{macrocode}
 \newskip\ITEC@oldcftbeforechapskip
 \ITEC@oldcftbeforechapskip=\cftbeforechapskip
+\newskip\ITEC@oldcftbeforesecskip
+\ITEC@oldcftbeforesecskip=\cftbeforesecskip
 \let\ITEC@oldl@chapter\l@chapter
 \let\ITEC@oldl@section\l@section
+\let\ITEC@oldl@subsection\l@subsection
 \def\l@chapter#1#2{\ITEC@oldl@chapter{#1}{#2}\cftbeforechapskip=3pt}
-\def\l@section#1#2{\ITEC@oldl@section{#1}{#2}\cftbeforechapskip=\ITEC@oldcftbeforechapskip}
+\def\l@section#1#2{\ITEC@oldl@section{#1}{#2}\cftbeforechapskip=\ITEC@oldcftbeforechapskip\cftbeforesecskip=3pt}
+\def\l@subsection#1#2{\ITEC@oldl@subsection{#1}{#2}\cftbeforesecskip=\ITEC@oldcftbeforesecskip}
 %    \end{macrocode}
 %
 % Set LOF LOT style.
@@ -760,6 +766,25 @@
 \pagestyle{fancy}
 \fancyhf{}
 \renewcommand{\headrulewidth}{0.4pt}
+\fancyhead[L]{\textbf{\leftmark}}
+\fancyhead[R]{\rightmark}
+\fancyfoot[C]{\thepage}
+\renewcommand{\chaptermark}[1]{
+  \markboth{
+    \ifITEC@inappendix
+      \appendixname~\thechapter
+    \else
+%<class-zh>第~\zhnumber{\thechapter}~章
+%<class-en>Chapter~\thechapter
+    \fi
+  \hspace{.8em}#1}{}
+}
+\renewcommand{\sectionmark}[1]{
+  \StrLen{#1}[\ITEC@secmark@tmplen]
+  \ifthenelse{\ITEC@secmark@tmplen<20}
+  {\markright{\thesection\hspace{.8em}\emph{#1}}}
+  {\markright{}}
+}
 %    \end{macrocode}
 %
 % \subsection{List Environment Style}
@@ -830,7 +855,7 @@
 \def\chapterautorefname{Chapter}
 \def\sectionautorefname{Section}
 \def\subsectionautorefname{Subsection}
-\def\subsubsectionautorefname{Subsubsection}
+\def\subsubsectionautorefname{Sub-subsection}
 \def\FancyVerbLineautorefname{Line}
 \def\pageautorefname{Page}
 \def\lstlistingautorefname{Code Fragment}
@@ -845,6 +870,32 @@
 \def\exampleautorefname{Example}
 \def\proofautorefname{Proof}
 %</class-en>
+%    \end{macrocode}
+%
+% Internal variables.
+%    \begin{macrocode}
+%<*class-en|class-zh>
+\long\def\ITEC@entitletitle{Huazhong University of Science and Technology\\Department of Electronics and Information Engineering\\Internet Technology and Engineering R\&D Center\\[0.8cm]Technical Report}
+\def\ITEC@enauthortitle{Author:}
+\def\ITEC@ensupervisortitle{Supervisor:}
+\def\ITEC@enabstractname{Abstract}
+\def\ITEC@enkeywordstitle{Key words:}
+%</class-en|class-zh>
+%<*class-en>
+\def\ITEC@ackname{Acknowledge}
+\def\ITEC@publicationtitle{Publication}
+%</class-en>
+%<*class-zh>
+\long\def\ITEC@zhtitletitle{华中科技大学 电子与信息工程系\\湖北省智能互联网技术重点实验室\\[0.8cm]技术报告}
+\def\ITEC@zhauthortitle{作者：}
+\def\ITEC@zhsupervisortitle{指导教师：}
+\def\ITEC@zhabstractname{摘\hspace{1em}要}
+\def\ITEC@zhabstractnamenospace{摘要}
+\def\ITEC@zhkeywordstitle{关键词：}
+\def\ITEC@ackname{致\hspace{1em}谢}
+\def\ITEC@acknamenospace{致谢}
+\def\ITEC@publicationtitle{在实验室期间发表的学术论文}
+%</class-zh>
 %    \end{macrocode}
 %
 % Set |\listfigurename| and |\listtablename|.
@@ -974,6 +1025,322 @@
 %    \end{macrocode}
 % \end{macro}
 %
+% Chinese title page.
+%    \begin{macrocode}
+%<*class-zh>
+\def\ITEC@zhtitlepage{
+  \begin{center}
+  \null
+  \vskip 2cm
+  {\LARGE \ITEC@zhtitletitle}\\[0.5cm]
+  \rule{\linewidth}{0.5mm}\\[0.55cm]
+  {\LARGE \bfseries \sffamily \HEI \ITEC@zhtitle}\\[0.35cm]
+  \rule{\linewidth}{0.5mm}\\[3.5cm]
+  \begin{minipage}{0.4\textwidth}
+    \begin{flushleft}
+    \emph{\Large \ITEC@zhauthortitle}\\
+    \Large \ITEC@zhauthor
+    \end{flushleft}
+  \end{minipage}
+  \begin{minipage}{0.4\textwidth}
+  \ifthenelse{\equal{\ITEC@zhsupervisor}{}}{
+    \hfill
+  }{ 
+    \begin{flushright}
+    \emph{\Large \ITEC@zhsupervisortitle} \\
+    \Large \ITEC@zhsupervisor
+    \end{flushright}   
+  }
+  \end{minipage}
+  \vfill
+  {\Large \zhdateformat}
+  \end{center}
+}
+%</class-zh>
+%    \end{macrocode}
+%
+% English title page.
+%    \begin{macrocode}
+\def\ITEC@entitlepage{
+  \begin{center}
+  \null
+  \vskip 1.5cm
+  {\Large \scshape \ITEC@entitletitle}\\[0.5cm]
+  \rule{\linewidth}{0.5mm}\\[0.55cm]
+  {\LARGE \bfseries \sffamily \ITEC@entitle}\\[0.35cm]
+  \rule{\linewidth}{0.5mm}\\[3.5cm]
+  \begin{minipage}{0.4\textwidth}
+    \begin{flushleft}
+    \emph{\Large \ITEC@enauthortitle}\\
+    \Large \ITEC@enauthor
+    \end{flushleft}
+  \end{minipage}
+  \begin{minipage}{0.4\textwidth}
+  \ifthenelse{\equal{\ITEC@ensupervisor}{}}{
+    \hfill
+  }{ 
+    \begin{flushright}
+    \emph{\Large \ITEC@ensupervisortitle} \\
+    \Large \ITEC@ensupervisor
+    \end{flushright}   
+  }
+  \end{minipage}
+  \vfill
+  {\Large \endateformat}
+  \end{center}
+}
+%    \end{macrocode}
+%
+% \begin{macro}{\maketitle,\makecover}
+% Commands to generate title page.
+%    \begin{macrocode}
+\def\maketitle{
+  \let\ITEC@oldthepage\thepage
+%<class-zh>\def\thepage{封面}
+%<class-en>\def\thepage{Titlepage}
+  \begin{titlepage}
+%<*class-zh>
+    \thispagestyle{empty}
+    \ITEC@zhtitlepage
+    \clearpage
+%</class-zh>
+    \thispagestyle{empty}
+    \ITEC@entitlepage
+  \end{titlepage}
+  \let\thepage\ITEC@oldthepage
+  \setcounter{page}{1}
+}
+\let\makecover\maketitle
+%    \end{macrocode}
+% \end{macro}
+%
+% Chinese abstract page.
+%    \begin{macrocode}
+%<*class-zh>
+\def\ITEC@zhabstractpage{
+  \chapter*{\ITEC@zhabstractname}
+  \ITEC@zhabstract \par
+  \vskip 1.2ex
+  \noindent\hei{\ITEC@zhkeywordstitle}\hspace{.8em} \ITEC@zhkeywords
+}
+%</class-zh>
+%    \end{macrocode}
+%
+% English abstract page.
+%    \begin{macrocode}
+\def\ITEC@enabstractpage{
+  \chapter*{\ITEC@enabstractname}
+  \ITEC@enabstract \par
+  \vskip 1.2ex
+  \noindent\textbf{\ITEC@enkeywordstitle}\hspace{.8em} \ITEC@enkeywords
+}
+%    \end{macrocode}
+%
+% \begin{macro}{\makeabstract}
+% A command to generate abstract page.
+%    \begin{macrocode}
+\def\makeabstract{
+  \phantomsection
+%<*class-zh>
+  \addcontentsline{toc}{chapter}{\ITEC@zhabstractnamenospace}
+  \markboth{\ITEC@zhabstractnamenospace}{}
+  \ITEC@zhabstractpage
+  \clearpage
+%</class-zh>
+%<*class-en>
+  \addcontentsline{toc}{chapter}{\ITEC@enabstractname}
+  \markboth{\ITEC@enabstractname}{}
+%</class-en>
+  \ITEC@enabstractpage
+  \clearpage
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\tableofcontents}
+% A command to generate table of contents.
+%    \begin{macrocode}
+\let\ITEC@tableofcontents\tableofcontents
+\def\tableofcontents{
+%<*class-zh>
+  \pdfbookmark{\contentsnamenospace}{\contentsnamenospace}
+  \markboth{\contentsnamenospace}{}
+%</class-zh>
+%<*class-en>
+  \pdfbookmark{\contentsname}{\contentsname}
+  \markboth{\contentsname}{}
+%</class-en>
+  \let\ITEC@oldmarkboth\markboth
+  \renewcommand\markboth[2]{}
+  \ITEC@tableofcontents
+  \let\markboth\ITEC@oldmarkboth
+  \clearpage
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{environment}{ack}
+% A command to generate acknowledge page.
+%    \begin{macrocode}
+\newenvironment{ack}{
+  \clearpage
+  \phantomsection
+%<*class-zh>
+  \addcontentsline{toc}{chapter}{\ITEC@acknamenospace}
+  \markboth{\ITEC@acknamenospace}{}
+%</class-zh>
+%<*class-en>
+  \addcontentsline{toc}{chapter}{\ITEC@ackname}
+  \markboth{\ITEC@ackname}{}
+%</class-en>
+  \chapter*{\ITEC@ackname}
+  \begingroup
+  \normalsize
+}{
+  \endgroup
+}
+%    \end{macrocode}
+% \end{environment}
+%
+% \begin{environment}{publications}
+% A command to generate publications page.
+%    \begin{macrocode}
+\newenvironment{publications}{
+  \clearpage
+  \ifITEC@inappendix
+    \chapter{\ITEC@publicationtitle}
+  \else
+    \phantomsection
+    \addcontentsline{toc}{chapter}{\ITEC@publicationtitle}
+    \chapter*{\ITEC@publicationtitle}
+  \fi
+  \markboth{\ITEC@publicationtitle}{}
+  \begin{enumerate}[labelindent=0pt,label={[\arabic*]}]
+}{
+  \end{enumerate}
+}
+%    \end{macrocode}
+% \end{environment}
+%
+% \begin{macro}{\bibliography}
+% A command to generate bibliography page. We use \textsf{thubib.bst} in \href{http://mirrors.ctan.org/help/Catalogue/entries/thuthesis}{\texttt{thuthesis}} to typeset bibliography in Chinese version template. And use \href{http://mirrors.ctan.org/help/Catalogue/entries/ieeetran}{\texttt{IEEEtran}} in English version template.
+%    \begin{macrocode}
+%<*class-zh>
+\bibpunct{[}{]}{,}{s}{}{,}
+\def\thudot{\unskip.}
+\def\thumasterbib{[Master Thesis]}
+\def\thuphdbib{[Doctor Thesis]}
+\bibliographystyle{thubib}
+%</class-zh>
+%<class-en>\bibliographystyle{IEEEtran}
+\let\ITEC@bibliography\bibliography
+\def\bibliography#1{
+  \begingroup
+  \clearpage
+  \twocolumn
+  \phantomsection
+  \addcontentsline{toc}{chapter}{\bibname}
+  \markboth{\bibname}{}
+%<class-zh>\ITEC@bibliography{#1}
+%<class-en>\ITEC@bibliography{IEEEabrv,#1}
+  \endgroup
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{environment}{appendix}
+% The appendix environment.
+%    \begin{macrocode}
+\newif\ifITEC@inappendix
+\ITEC@inappendixfalse
+\newif\ifITEC@appendix@resetmainmatter
+\ITEC@appendix@resetmainmatterfalse
+\renewenvironment{appendix}{
+  \if@mainmatter
+    \ITEC@appendix@resetmainmatterfalse
+  \else
+    \ITEC@appendix@resetmainmattertrue
+    \@mainmattertrue
+  \fi
+  \appendixtitletocon
+  \appendices
+  \titleformat{\chapter}
+  {
+    \bfseries
+%<class-zh>\HEI
+    \centering
+    \changefont{size=18pt}
+  }
+  {\appendixname\,\thechapter} 
+  {1em}
+  {}
+  \ITEC@inappendixtrue
+}{
+  \endappendices
+  \ITEC@inappendixfalse
+  \ifITEC@appendix@resetmainmatter
+    \ITEC@appendix@resetmainmatterfalse
+    \@mainmatterfalse
+  \else\fi
+}
+%    \end{macrocode}
+% \end{environment}
+%
+% \begin{macro}{\listoffigures}
+% A command to generate list of figures.
+%    \begin{macrocode}
+\let\ITEC@listoffigures\listoffigures
+\def\listoffigures{
+  \clearpage
+  \ifITEC@inappendix
+    \addtocounter{chapter}{1}
+    \def\listfigurename{\appendixname\,\thechapter\hspace{1em}\ITEC@listfigurename}
+  \else
+    \def\listfigurename{\ITEC@listfigurename}
+  \fi
+  \phantomsection
+  \ifITEC@inappendix
+    \addcontentsline{toc}{chapter}{\thechapter\hspace{1em}\ITEC@listfigurename}
+  \else
+    \addcontentsline{toc}{chapter}{\listfigurename}
+  \fi
+  \markboth{\listfigurename}{}
+  \let\ITEC@oldmarkboth\markboth
+  \renewcommand\markboth[2]{}
+  \ITEC@listoffigures
+  \let\markboth\ITEC@oldmarkboth
+  \def\listfigurename{\ITEC@listfigurename}
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\listoftables}
+% A command to generate list of tables.
+%    \begin{macrocode}
+\let\ITEC@listoftables\listoftables
+\def\listoftables{
+  \clearpage
+  \ifITEC@inappendix
+    \addtocounter{chapter}{1}
+    \def\listtablename{\appendixname\,\thechapter\hspace{1em}\ITEC@listtablename}
+  \else
+    \def\listtablename{\ITEC@listtablename}
+  \fi
+  \phantomsection
+  \ifITEC@inappendix
+    \addcontentsline{toc}{chapter}{\thechapter\hspace{1em}\ITEC@listtablename}
+  \else
+    \addcontentsline{toc}{chapter}{\listtablename}
+  \fi
+  \markboth{\listtablename}{}
+  \let\ITEC@oldmarkboth\markboth
+  \renewcommand\markboth[2]{}
+  \ITEC@listoftables
+  \let\markboth\ITEC@oldmarkboth
+  \def\listtablename{\ITEC@listtablename}
+}
+%    \end{macrocode}
+% \end{macro}
 %
 %    \begin{macrocode}
 %</class>
@@ -985,17 +1352,55 @@
 % ^^A Other files
 % \iffalse
 %
+%<*example-zh|example-en>
+%<example-zh>\documentclass{itecreport-zh}
+%<example-en>\documentclass{itecreport-en}
+
+\title
+%<example-zh>{\LaTeX 模板使用示例}
+{An Example of Using itecreport-zh \LaTeX{} Template}
+\author
+%<example-zh>{许铖}
+{Xu Cheng}
+\supervisor
+%<example-zh>{黑晓军\hspace{1em}副教授}
+{Ass. Prof. Xiaojun Hei}
+\date{2013}{6}{1}
+
 %<*example-zh>
-\documentclass{itecreport-zh}
-\begin{document}
-\end{document}
+\zhabstract{
+    这是一个\LaTeX{}模板使用示例文件。该模板用于华中科技大学电子与信息工程系湖北省智能互联网技术重点实验室技术报告写作。
+
+    该模板基于LPPL v1.3发行。
+
+}
+\zhkeywords{\LaTeX{}，华中科技大学，模板}
 %</example-zh>
-%
-%<*example-en>
-\documentclass{itecreport-en}
+
+%<example-zh>\enabstract
+%<example-en>\abstract
+{
+    This is a \LaTeX{} template example file. This template is used in written technical report for Internet Technology and Engineering R\&D Center of Huazhong Univ. of Sci. \& Tech.
+
+    This template is published under LPPL v1.3 License.
+
+}
+%<example-zh>\enkeywords
+%<example-en>\keywords
+{\LaTeX{}, Huazhong Univ. of Sci. \& Tech., Template}
+
 \begin{document}
+
+\frontmatter
+\maketitle
+\makeabstract
+\tableofcontents
+\listoffigures
+\listoftables
+\mainmatter
+
 \end{document}
-%</example-en>
+%</example-zh|example-en>
 %
 %<*example-bib>
 @BOOK{TEXGURU99,
