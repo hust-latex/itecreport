@@ -782,7 +782,7 @@
     \ifITEC@inappendix
       \appendixname~\thechapter
     \else
-%<class-zh>第~\zhnumber{\thechapter}~章
+%<class-zh>第\zhnumber{\thechapter}章
 %<class-en>Chapter~\thechapter
     \fi
   \hspace{.8em}#1}{}
@@ -1217,12 +1217,13 @@
   \clearpage
   \ifITEC@inappendix
     \chapter{\ITEC@publicationtitle}
+    \markboth{\appendixname\,\thechapter\hspace{1em}\ITEC@publicationtitle}{}
   \else
     \phantomsection
     \addcontentsline{toc}{chapter}{\ITEC@publicationtitle}
     \chapter*{\ITEC@publicationtitle}
+    \markboth{\ITEC@publicationtitle}{}
   \fi
-  \markboth{\ITEC@publicationtitle}{}
   \begin{enumerate}[labelindent=0pt,label={[\arabic*]}]
 }{
   \end{enumerate}
