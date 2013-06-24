@@ -500,6 +500,116 @@
 \RequirePackage{perpage}
 %    \end{macrocode}
 %
+% \section{Localization}
+% Chinese localization.
+% \footnote{The |autorefname| Reference:\url{http://tex.stackexchange.com/questions/52410/how-to-use-the-command-autoref-to-implement-the-same-effect-when-use-the-comman}}
+%    \begin{macrocode}
+%<*class-zh>
+\def\indexname{索引}
+\def\figurename{图}
+\def\tablename{表}
+\def\listingscaption{代码}
+\def\bibname{参考文献}
+\def\contentsname{目\hspace{1em}录}
+\def\contentsnamenospace{目录}
+\def\appendixname{附录}
+\def\ITEC@listfigurename{插图索引}
+\def\ITEC@listtablename{表格索引}  
+\def\equationautorefname{公式}
+\def\footnoteautorefname{脚注}
+\def\itemautorefname~#1\null{第~#1~项\null}
+\def\figureautorefname{图}
+\def\tableautorefname{表}
+\def\appendixautorefname{附录}
+\def\chapterautorefname~#1\null{第\zhnumber{#1}章\null}
+\def\sectionautorefname~#1\null{#1~小节\null}
+\def\subsectionautorefname~#1\null{#1~小节\null}
+\def\subsubsectionautorefname~#1\null{#1~小节\null}
+\def\FancyVerbLineautorefname~#1\null{第~#1~行\null}
+\def\pageautorefname~#1\null{第~#1~页\null}
+\def\lstlistingautorefname{代码}
+\def\definitionautorefname{定义}
+\def\propositionautorefname{命题}
+\def\lemmaautorefname{引理}
+\def\theoremautorefname{定理}
+\def\axiomautorefname{公理}
+\def\corollaryautorefname{推论}
+\def\exerciseautorefname{练习}
+\def\exampleautorefname{例}
+\def\proofautorefname{证明}
+\SetAlgorithmName{算法}{算法}{算法索引}
+\SetAlgoProcName{过程}{过程}
+\SetAlgoFuncName{函数}{函数}
+\def\AlgoLineautorefname~#1\null{第~#1~行\null}
+%</class-zh>
+%    \end{macrocode}
+%
+% English localization.
+%    \begin{macrocode}
+%<*class-en>
+\def\ITEC@listfigurename{List of Figures}
+\def\ITEC@listtablename{List of Tables}  
+\def\equationautorefname{Equation}
+\def\footnoteautorefname{Footnote}
+\def\itemautorefname{Item}
+\def\figureautorefname{Figure}
+\def\tableautorefname{Table}
+\def\appendixautorefname{Appendix}
+\def\chapterautorefname{Chapter}
+\def\sectionautorefname{Section}
+\def\subsectionautorefname{Subsection}
+\def\subsubsectionautorefname{Sub-subsection}
+\def\FancyVerbLineautorefname{Line}
+\def\pageautorefname{Page}
+\def\lstlistingautorefname{Code Fragment}
+\def\definitionautorefname{Definition}
+\def\propositionautorefname{Proposition}
+\def\lemmaautorefname{Lemma}
+\def\theoremautorefname{Theorem}
+\def\axiomautorefname{Axiom}
+\def\corollaryautorefname{Corollary}
+\def\exerciseautorefname{Exercise}
+\def\exampleautorefname{Example}
+\def\proofautorefname{Proof}
+\SetAlgorithmName{Algorithm}{Algorithm}{List of Algorithms}
+\SetAlgoProcName{Procedure}{Procedure}
+\SetAlgoFuncName{Function}{Function}
+\def\AlgoLineautorefname{Line}
+%</class-en>
+%    \end{macrocode}
+%
+% Internal variables.
+%    \begin{macrocode}
+%<*class-en|class-zh>
+\long\def\ITEC@entitletitle{Huazhong University of Science and Technology\\Department of Electronics and Information Engineering\\Internet Technology and Engineering R\char38D Center\\[0.8cm]Technical Report}
+\def\ITEC@enauthortitle{Author:}
+\def\ITEC@ensupervisortitle{Supervisor:}
+\def\ITEC@enabstractname{Abstract}
+\def\ITEC@enkeywordstitle{Key words:}
+%</class-en|class-zh>
+%<*class-en>
+\def\ITEC@ackname{Acknowledge}
+\def\ITEC@publicationtitle{Publication}
+%</class-en>
+%<*class-zh>
+\long\def\ITEC@zhtitletitle{华中科技大学 电子与信息工程系\\湖北省智能互联网技术重点实验室\\[0.8cm]技术报告}
+\def\ITEC@zhauthortitle{作者：}
+\def\ITEC@zhsupervisortitle{指导教师：}
+\def\ITEC@zhabstractname{摘\hspace{1em}要}
+\def\ITEC@zhabstractnamenospace{摘要}
+\def\ITEC@zhkeywordstitle{关键词：}
+\def\ITEC@ackname{致\hspace{1em}谢}
+\def\ITEC@acknamenospace{致谢}
+\def\ITEC@publicationtitle{在实验室期间发表的学术论文}
+%</class-zh>
+%    \end{macrocode}
+%
+% Set |\listfigurename| and |\listtablename|.
+%    \begin{macrocode}
+\def\listfigurename{\ITEC@listfigurename}
+\def\listtablename{\ITEC@listtablename}
+%    \end{macrocode}
+%
 % \section{Style Setting}
 % \subsection{Equation Style}
 % Allow long equation breaking between lines or pages.
@@ -762,10 +872,14 @@
 % \footnote{Reference:\url{http://www.latex-community.org/viewtopic.php?f=5&t=1838}}
 %    \begin{macrocode}
 \renewcommand*\cftfigpresnum{\figurename~}
-\settowidth{\cftfignumwidth}{\cftfigpresnum}
+\newlength{\ITEC@cftfignumwidth@tmp}
+\settowidth{\ITEC@cftfignumwidth@tmp}{\cftfigpresnum}
+\addtolength{\cftfignumwidth}{\ITEC@cftfignumwidth@tmp}
 \renewcommand{\cftfigaftersnumb}{\quad~}
 \renewcommand*\cfttabpresnum{\tablename~}
-\settowidth{\cfttabnumwidth}{\cfttabpresnum}
+\newlength{\ITEC@cfttabnumwidth@tmp}
+\settowidth{\ITEC@cfttabnumwidth@tmp}{\cfttabpresnum}
+\addtolength{\cfttabnumwidth}{\ITEC@cfttabnumwidth@tmp}
 \renewcommand{\cfttabaftersnumb}{\quad~}
 %    \end{macrocode}
 %
@@ -810,116 +924,6 @@
 % \subsection{Footnote Style}
 %    \begin{macrocode}
 \MakePerPage{footnote}
-%    \end{macrocode}
-%
-% \section{Localization}
-% Chinese localization.
-% \footnote{The |autorefname| Reference:\url{http://tex.stackexchange.com/questions/52410/how-to-use-the-command-autoref-to-implement-the-same-effect-when-use-the-comman}}
-%    \begin{macrocode}
-%<*class-zh>
-\def\indexname{索引}
-\def\figurename{图}
-\def\tablename{表}
-\def\listingscaption{代码}
-\def\bibname{参考文献}
-\def\contentsname{目\hspace{1em}录}
-\def\contentsnamenospace{目录}
-\def\appendixname{附录}
-\def\ITEC@listfigurename{插图索引}
-\def\ITEC@listtablename{表格索引}  
-\def\equationautorefname{公式}
-\def\footnoteautorefname{脚注}
-\def\itemautorefname~#1\null{第~#1~项\null}
-\def\figureautorefname{图}
-\def\tableautorefname{表}
-\def\appendixautorefname{附录}
-\def\chapterautorefname~#1\null{第\zhnumber{#1}章\null}
-\def\sectionautorefname~#1\null{#1~小节\null}
-\def\subsectionautorefname~#1\null{#1~小节\null}
-\def\subsubsectionautorefname~#1\null{#1~小节\null}
-\def\FancyVerbLineautorefname~#1\null{第~#1~行\null}
-\def\pageautorefname~#1\null{第~#1~页\null}
-\def\lstlistingautorefname{代码}
-\def\definitionautorefname{定义}
-\def\propositionautorefname{命题}
-\def\lemmaautorefname{引理}
-\def\theoremautorefname{定理}
-\def\axiomautorefname{公理}
-\def\corollaryautorefname{推论}
-\def\exerciseautorefname{练习}
-\def\exampleautorefname{例}
-\def\proofautorefname{证明}
-\SetAlgorithmName{算法}{算法}{算法索引}
-\SetAlgoProcName{过程}{过程}
-\SetAlgoFuncName{函数}{函数}
-\def\AlgoLineautorefname~#1\null{第~#1~行\null}
-%</class-zh>
-%    \end{macrocode}
-%
-% English localization.
-%    \begin{macrocode}
-%<*class-en>
-\def\ITEC@listfigurename{List of Figures}
-\def\ITEC@listtablename{List of Tables}  
-\def\equationautorefname{Equation}
-\def\footnoteautorefname{Footnote}
-\def\itemautorefname{Item}
-\def\figureautorefname{Figure}
-\def\tableautorefname{Table}
-\def\appendixautorefname{Appendix}
-\def\chapterautorefname{Chapter}
-\def\sectionautorefname{Section}
-\def\subsectionautorefname{Subsection}
-\def\subsubsectionautorefname{Sub-subsection}
-\def\FancyVerbLineautorefname{Line}
-\def\pageautorefname{Page}
-\def\lstlistingautorefname{Code Fragment}
-\def\definitionautorefname{Definition}
-\def\propositionautorefname{Proposition}
-\def\lemmaautorefname{Lemma}
-\def\theoremautorefname{Theorem}
-\def\axiomautorefname{Axiom}
-\def\corollaryautorefname{Corollary}
-\def\exerciseautorefname{Exercise}
-\def\exampleautorefname{Example}
-\def\proofautorefname{Proof}
-\SetAlgorithmName{Algorithm}{Algorithm}{List of Algorithms}
-\SetAlgoProcName{Procedure}{Procedure}
-\SetAlgoFuncName{Function}{Function}
-\def\AlgoLineautorefname{Line}
-%</class-en>
-%    \end{macrocode}
-%
-% Internal variables.
-%    \begin{macrocode}
-%<*class-en|class-zh>
-\long\def\ITEC@entitletitle{Huazhong University of Science and Technology\\Department of Electronics and Information Engineering\\Internet Technology and Engineering R\char38D Center\\[0.8cm]Technical Report}
-\def\ITEC@enauthortitle{Author:}
-\def\ITEC@ensupervisortitle{Supervisor:}
-\def\ITEC@enabstractname{Abstract}
-\def\ITEC@enkeywordstitle{Key words:}
-%</class-en|class-zh>
-%<*class-en>
-\def\ITEC@ackname{Acknowledge}
-\def\ITEC@publicationtitle{Publication}
-%</class-en>
-%<*class-zh>
-\long\def\ITEC@zhtitletitle{华中科技大学 电子与信息工程系\\湖北省智能互联网技术重点实验室\\[0.8cm]技术报告}
-\def\ITEC@zhauthortitle{作者：}
-\def\ITEC@zhsupervisortitle{指导教师：}
-\def\ITEC@zhabstractname{摘\hspace{1em}要}
-\def\ITEC@zhabstractnamenospace{摘要}
-\def\ITEC@zhkeywordstitle{关键词：}
-\def\ITEC@ackname{致\hspace{1em}谢}
-\def\ITEC@acknamenospace{致谢}
-\def\ITEC@publicationtitle{在实验室期间发表的学术论文}
-%</class-zh>
-%    \end{macrocode}
-%
-% Set |\listfigurename| and |\listtablename|.
-%    \begin{macrocode}
-\def\listfigurename{\ITEC@listfigurename}
-\def\listtablename{\ITEC@listtablename}
 %    \end{macrocode}
 %
 % \section{Variables Setting}
@@ -1596,6 +1600,185 @@ c & d \\
 
 %</example-zh>
 %<*example-en>
+\chapter{Simple Test}\label{chapter:1}
+
+\section{Level 1}\label{sec:1}
+\subsection{Level 2}\label{sec:2}
+\subsubsection{Level 3}\label{sec:3}
+Content
+\footnote{\label{footnote:1}A footnote.}
+
+\section{Font}
+
+Normal \textbf{Bold} \emph{Italic} \textsf{Sans}
+
+The quick brown fox jumps over the lazy dog.
+
+\section{Equation}
+
+Single equation, see \autoref{eq:1}.
+\begin{equation}
+  c^2 = a^2 + b^2 \label{eq:1}
+\end{equation}
+
+Multi-equations, see \autoref{eq:2} and \autoref{eq:3}.
+
+\begin{subequations}
+\begin{equation}
+  F = ma \label{eq:2}
+\end{equation}
+\begin{equation}
+  E = mc^2 \label{eq:3}
+\end{equation}
+\end{subequations}
+
+\section{List Environment}
+
+\begin{enumerate}
+    \item Level 1\label{item:1}
+    \item Level 1
+    \begin{enumerate}
+        \item Level 2\label{item:2}
+        \item Level 2
+        \begin{enumerate}
+            \item Level 3\label{item:3}
+            \item Level 3
+        \end{enumerate}
+    \end{enumerate}
+\end{enumerate}
+
+\begin{description}
+    \item[Discription]  Content
+\end{description}
+
+\chapter{Other Test}
+
+\section{Code Highlight}
+
+\begin{lstlisting}[language=python]
+import os
+
+def main():
+    '''
+    doc here
+    '''
+    print 'hello, world' # Abc
+\end{lstlisting}
+
+\section{Theorem}
+
+\begin{definition}\label{def:1}
+This is a definition.
+\end{definition}
+\begin{proposition}\label{proposition:1}
+This is a proposition.
+\end{proposition}
+\begin{axiom}\label{axiom:1}
+This is an axiom.
+\end{axiom}
+\begin{lemma}\label{lemma:1}
+This is a lemma.
+\end{lemma}
+\begin{theorem}\label{theorem:1}
+This is a theorem.
+\end{theorem}
+\begin{proof}\label{proof:1}
+This is a proof.
+\end{proof}
+
+\section{Algorithm}
+
+\begin{algorithm}[H]
+\SetAlgoLined
+\KwData{this text}
+\KwResult{how to write algorithm with \LaTeX2e }
+initialization\;\label{alg_line:1}
+\While{not at end of this document}{
+read current\;
+\eIf{understand}{
+go to next section\;
+current section becomes this one\;
+}{
+go back to the beginning of current section\;
+}
+}
+\caption{How to write algorithms}\label{alg:1}
+\end{algorithm}
+
+\section{Table}
+See \autoref{tab:1}.
+
+\begin{table}[!h]
+\centering
+\caption{A table}\label{tab:1}
+\begin{tabular}{|c|c|}
+\hline
+a & b \\
+\hline
+c & d \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Figure}
+See \autoref{fig:1}.Figure supports format in eps, png, pdf and so on. Multi-figures, see \autoref{fig:2}. Reference separately: \autoref{fig:2-1}, \autoref{fig:2-2}.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=.4\textwidth]{fig-example.pdf}
+\caption{A figure}\label{fig:1}
+\end{figure}
+
+\begin{figure}[!h]
+\centering
+  \begin{subfigure}[b]{0.3\textwidth}
+  \includegraphics[width=\textwidth]{fig-example.pdf}
+  \caption{Figure A}\label{fig:2-1}
+  \end{subfigure}
+  ~
+  \begin{subfigure}[b]{0.3\textwidth}
+  \includegraphics[width=\textwidth]{fig-example.pdf}
+  \caption{Figure B}\label{fig:2-2}
+  \end{subfigure}
+\caption{Multi-figures}\label{fig:2}
+\end{figure}
+
+\section{Bibliography}
+Cite one bib\cite{knuth}, cite two\cite{TEXGURU99,knuth}.
+
+\section[\textbackslash{}autoref Test]{\texttt{\textbackslash{}autoref} Test}
+
+\begin{description}
+  \item[Equation] \autoref{eq:1}
+  \item[Footnote] \autoref{footnote:1}
+  \item[Item] \autoref{item:1},\autoref{item:2},\autoref{item:3}
+  \item[Figure] \autoref{tab:1}
+  \item[Table] \autoref{fig:1}
+  \item[Appendix] \autoref{appendix:1}
+  \item[Chapter] \autoref{chapter:1}
+  \item[Section] \autoref{sec:1},\autoref{sec:2},\autoref{sec:3}
+  \item[Algorithm] \autoref{alg:1},\autoref{alg_line:1}
+  \item[Theorem] \autoref{def:1},\autoref{proposition:1},\autoref{axiom:1},\autoref{lemma:1},\autoref{theorem:1},\autoref{proof:1}
+\end{description}
+
+\backmatter
+
+\begin{ack}
+Acknowledge
+\end{ack}
+
+\bibliography{ref-example}
+
+\appendix
+
+\begin{publications}
+    \item Thesis 1
+    \item Thesis 2
+\end{publications}
+
+\chapter{This is an appendix}\label{appendix:1}
+Content.
+
 %</example-en>
 
 \end{document}
