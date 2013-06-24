@@ -521,6 +521,7 @@
 \def\figureautorefname{图}
 \def\tableautorefname{表}
 \def\appendixautorefname{附录}
+\expandafter\def\csname\appendixname autorefname\endcsname{\appendixname}
 \def\chapterautorefname~#1\null{第\zhnumber{#1}章\null}
 \def\sectionautorefname~#1\null{#1~小节\null}
 \def\subsectionautorefname~#1\null{#1~小节\null}
@@ -555,6 +556,7 @@
 \def\figureautorefname{Figure}
 \def\tableautorefname{Table}
 \def\appendixautorefname{Appendix}
+\expandafter\def\csname\appendixname autorefname\endcsname{\appendixname}
 \def\chapterautorefname{Chapter}
 \def\sectionautorefname{Section}
 \def\subsectionautorefname{Subsection}
