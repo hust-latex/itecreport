@@ -852,6 +852,7 @@
 \SetAlgorithmName{算法}{算法}{算法索引}
 \SetAlgoProcName{过程}{过程}
 \SetAlgoFuncName{函数}{函数}
+\def\algorithmcflinename~#1\null{第~#1~行\null}
 %</class-zh>
 %    \end{macrocode}
 %
@@ -885,6 +886,7 @@
 \SetAlgorithmName{Algorithm}{Algorithm}{List of Algorithms}
 \SetAlgoProcName{Procedure}{Procedure}
 \SetAlgoFuncName{Function}{Function}
+\def\algorithmcflinename{Line}
 %</class-en>
 %    \end{macrocode}
 %
@@ -1505,7 +1507,7 @@ def main():
 \SetAlgoLined
 \KwData{this text}
 \KwResult{how to write algorithm with \LaTeX2e }
-initialization\;
+initialization\;\label{alg_line:1}
 \While{not at end of this document}{
 read current\;
 \eIf{understand}{
@@ -1569,7 +1571,7 @@ c & d \\
   \item[附录] \autoref{appendix:1}
   \item[章] \autoref{chapter:1}
   \item[小节] \autoref{sec:1},\autoref{sec:2},\autoref{sec:3}
-  \item[算法] \autoref{alg:1}
+  \item[算法] \autoref{alg:1},\autoref{alg_line:1}
 \end{description}
 
 
