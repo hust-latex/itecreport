@@ -47,7 +47,7 @@ For Windows User who don't install `Make`, use the command below to unpack the p
 ```
 makewin32.bat unpack
 ```
-Then copy the file `itecreport-en.cls` from directory `itecreport` into your TeX project root directory.
+Then copy the file `itecreport-zh.cls` and `itecreport-en.cls` from directory `itecreport` into your TeX project root directory.
 
 ## Usage
 
