@@ -14,6 +14,41 @@ This template provides two class files which correspond to Chinese version and E
     * `AdobeHeitiStd-Regular`
     * `AdobeFangsongStd-Regular`
 
+## Installation
+
+### Install into local
+
+Use the command below to install this template into local.
+```
+make install
+```
+If you need uninstall it, use the command below.
+```
+make uninstall
+```
+
+For Windows User who don't install `Make`, use the command below to install.
+```
+makewin32.bat install
+```
+If you need uninstall it, use the command below.
+```
+makewin32.bat uninstall
+```
+Although `makewin32.bat` behaves much like `Makefile`, I still recommend you install `Make` into your Windows. You can download it from [here](http://gnuwin32.sourceforge.net/packages/make.htm).
+
+### Use without installation
+
+If you want to use this template temporary rather than installing it into local for long term use. Run below command to unpack the package.
+```
+make unpack
+```
+For Windows User who don't install `Make`, use the command below to unpack the package.
+```
+makewin32.bat unpack
+```
+Then copy the file `itecreport-en.cls` from directory `itecreport` into your TeX project root directory.
+
 ## Usage
 
 **Important : This template can only be compiled by XeLaTeX or LuaLaTeX[Recommend].**
