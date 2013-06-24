@@ -61,6 +61,6 @@ reallyclean:
 			*.mtc0 *.nav *.nlo *.out *.pdfsync \
 			*.pyg *.snm *.synctex.gz *.thm *.toc \
 			*.vrb *.xdy *.tdo \
-			*.cls *.tex *.md *.bib
+			*.cls *.tex *.md *.bib itecreport*.pdf
 
 .PHONY:all unpack class doc example example-zh example-en clean reallyclean FORCE

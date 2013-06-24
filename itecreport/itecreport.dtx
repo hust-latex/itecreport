@@ -497,6 +497,7 @@
 \RequirePackage{appendix}
 \RequirePackage[titles]{tocloft}
 \RequirePackage{xstring}
+\RequirePackage{perpage}
 %    \end{macrocode}
 %
 % \section{Style Setting}
@@ -799,12 +800,16 @@
 %    \begin{macrocode}
 \setlist{noitemsep,partopsep=0pt,topsep=.8ex}
 \setlist[1]{labelindent=\parindent}
-\setlist[enumerate,1]{label=\arabic*.}
-\setlist[enumerate,2]{label*=\arabic*}
-\setlist[enumerate,3]{label=\emph{\alph*})}
+\setlist[enumerate,1]{label=\arabic*.,ref=\arabic*}
+\setlist[enumerate,2]{label*=\arabic*,ref=\theenumi.\arabic*}
+\setlist[enumerate,3]{label=\emph{\alph*}),ref=\theenumii\emph{\alph*}}
 \setlist[description]{font=\bfseries
 %<class-zh>\HEI
 }
+%
+% \subsection{Footnote Style}
+%    \begin{macrocode}
+\MakePerPage{footnote}
 %    \end{macrocode}
 %
 % \section{Localization}
@@ -815,7 +820,6 @@
 \def\indexname{索引}
 \def\figurename{图}
 \def\tablename{表}
-\def\algorithmcfname{算法}
 \def\listingscaption{代码}
 \def\bibname{参考文献}
 \def\contentsname{目\hspace{1em}录}
@@ -836,7 +840,6 @@
 \def\FancyVerbLineautorefname~#1\null{第~#1~行\null}
 \def\pageautorefname~#1\null{第~#1~页\null}
 \def\lstlistingautorefname{代码}
-\def\algorithmautorefname{算法}
 \def\definitionautorefname{定义}
 \def\propositionautorefname{命题}
 \def\lemmaautorefname{引理}
@@ -846,6 +849,9 @@
 \def\exerciseautorefname{练习}
 \def\exampleautorefname{例}
 \def\proofautorefname{证明}
+\SetAlgorithmName{算法}{算法}{算法索引}
+\SetAlgoProcName{过程}{过程}
+\SetAlgoFuncName{函数}{函数}
 %</class-zh>
 %    \end{macrocode}
 %
@@ -867,7 +873,6 @@
 \def\FancyVerbLineautorefname{Line}
 \def\pageautorefname{Page}
 \def\lstlistingautorefname{Code Fragment}
-\def\algorithmautorefname{Algorithm}
 \def\definitionautorefname{Definition}
 \def\propositionautorefname{Proposition}
 \def\lemmaautorefname{Lemma}
@@ -877,13 +882,16 @@
 \def\exerciseautorefname{Exercise}
 \def\exampleautorefname{Example}
 \def\proofautorefname{Proof}
+\SetAlgorithmName{Algorithm}{Algorithm}{List of Algorithms}
+\SetAlgoProcName{Procedure}{Procedure}
+\SetAlgoFuncNam{Function}{Function}
 %</class-en>
 %    \end{macrocode}
 %
 % Internal variables.
 %    \begin{macrocode}
 %<*class-en|class-zh>
-\long\def\ITEC@entitletitle{Huazhong University of Science and Technology\\Department of Electronics and Information Engineering\\Internet Technology and Engineering R\&D Center\\[0.8cm]Technical Report}
+\long\def\ITEC@entitletitle{Huazhong University of Science and Technology\\Department of Electronics and Information Engineering\\Internet Technology and Engineering R\char38D Center\\[0.8cm]Technical Report}
 \def\ITEC@enauthortitle{Author:}
 \def\ITEC@ensupervisortitle{Supervisor:}
 \def\ITEC@enabstractname{Abstract}
@@ -1361,9 +1369,8 @@
 %<example-zh>\documentclass{itecreport-zh}
 %<example-en>\documentclass{itecreport-en}
 
-\title
-%<example-zh>{\LaTeX 模板使用示例}
-{An Example of Using itecreport-zh \LaTeX{} Template}
+%<example-zh>\title{\LaTeX 模板使用示例}{An Example of Using itecreport-zh \LaTeX{} Template}
+%<example-en>\title{An Example of Using itecreport-en \LaTeX{} Template}
 \author
 %<example-zh>{许铖}
 {Xu Cheng}
@@ -1405,12 +1412,13 @@
 \mainmatter
 
 %<*example-zh>
-\chapter{基本格式测试}
+\chapter{基本格式测试}\label{chapter:1}
 
-\section{第一层}
-\subsection{第二层}
-\subsubsection{第三层}
+\section{第一层}\label{sec:1}
+\subsection{第二层}\label{sec:2}
+\subsubsection{第三层}\label{sec:3}
 测试测试测试测试测试测试测试测试测试测试测试测试。
+\footnote{\label{footnote:1}脚注}
 
 \section{字体}
 
@@ -1439,13 +1447,13 @@
 \section{罗列环境}
 
 \begin{enumerate}
-    \item 第一层
+    \item 第一层\label{item:1}
     \item 第一层
     \begin{enumerate}
-        \item 第二层
+        \item 第二层\label{item:2}
         \item 第二层
         \begin{enumerate}
-            \item 第三层
+            \item 第三层\label{item:3}
             \item 第三层
         \end{enumerate}
     \end{enumerate}
@@ -1507,7 +1515,7 @@ current section becomes this one\;
 go back to the beginning of current section\;
 }
 }
-\caption{How to write algorithms}
+\caption{How to write algorithms}\label{alg:1}
 \end{algorithm}
 
 \section{表格}
@@ -1524,7 +1532,6 @@ c & d \\
 \hline
 \end{tabular}
 \end{table}
-
 \section{图片}
 图片见\autoref{fig:1}。图片格式支持eps，png，pdf等。多个图片见\autoref{fig:2}，分开引用：\autoref{fig:2-1}，\autoref{fig:2-2}。
 
@@ -1551,6 +1558,21 @@ c & d \\
 \section{参考文献示例}
 这是一篇中文参考文献\cite{TEXGURU99}；这是一篇英文参考文献\cite{knuth}；同时引用\cite{TEXGURU99,knuth}。
 
+\section[\textbackslash{}autoref 测试]{\texttt{\textbackslash{}autoref} 测试}
+
+\begin{description}
+  \item[公式] \autoref{eq:1}
+  \item[脚注] \autoref{footnote:1}
+  \item[项] \autoref{item:1},\autoref{item:2},\autoref{item:3}
+  \item[图] \autoref{tab:1}
+  \item[表] \autoref{fig:1}
+  \item[附录] \autoref{appendix:1}
+  \item[章] \autoref{chapter:1}
+  \item[小节] \autoref{sec:1},\autoref{sec:2},\autoref{sec:3}
+  \item[算法] \autoref{alg:1}
+\end{description}
+
+
 \backmatter
 
 \begin{ack}
@@ -1566,7 +1588,7 @@ c & d \\
     \item 论文2
 \end{publications}
 
-\chapter{这是一个附录}
+\chapter{这是一个附录}\label{appendix:1}
 附录正文。
 
 %</example-zh>
