@@ -51,7 +51,8 @@ clean:
 			*.lof *.log *.lot *.maf *.mtc \
 			*.mtc0 *.nav *.nlo *.out *.pdfsync \
 			*.pyg *.snm *.synctex.gz *.thm *.toc \
-			*.vrb *.xdy *.tdo 
+			*.vrb *.xdy *.tdo \
+			*.cls *.tex *.md *.bib
 
 reallyclean:
 	-$(RM) *.acn *.acr *.alg *.aux *.bbl \
