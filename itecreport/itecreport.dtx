@@ -353,7 +353,7 @@
 % 下面来介绍其它基本命令。
 %
 % \begin{function}{\frontmatter,\mainmatter,\backmatter}
-%     这一组命令用于设定论文的状态、改变样式，其具体使用见\nameref{subsec:简单示例}。\verb+\frontmatter+用在文档最开始，表明文档的前言部分（如封面，摘要，目录等）的开始。\verb+\mainmatter+表示论文正文的开始。\verb+\backmatter+表示论文正文的结束。
+%     这一组命令用于设定论文的状态、改变样式，其具体使用见\nameref{sec:简单示例}。\verb+\frontmatter+用在文档最开始，表明文档的前言部分（如封面，摘要，目录等）的开始。\verb+\mainmatter+表示论文正文的开始。\verb+\backmatter+表示论文正文的结束。
 % \end{function}
 %
 % \begin{function}{\maketitle,\makecover}
@@ -428,17 +428,18 @@
 %     \end{verbatim}
 % \end{function}
 %
-% \section{简单示例}\label{subsec:简单示例}
-% 如下为一个使用本模板的简单示例。更完整的例子请见\texttt{hustthesis-example.tex}文件，其效果见\href{https://github.com/michael911009/itecreport/raw/master/itecreport/itecreport-zh% -example.pdf}{\texttt{hustthesis-example.pdf}}。
+% \section{简单示例}\label{sec:简单示例}
+% 如下为一个使用本模板的简单示例。更完整的例子请见\texttt{itecreport-zh-example.tex}文件，其效果见\href{https://github.com/michael911009/itecreport/raw/master/itecreport/itecreport-zh-example.pdf}{\texttt{itecreport-zh-example.pdf}}。
 % 
 %<*driver>
 % \begin{lstlisting}[language={[LaTeX]TeX}]
 \documentclass{itecreport-zh}
 
+\reportno{12345} % 可选
 \title{中文标题}{英文标题}
 \author{作者名}{作者名拼音}
-\supervisor{指导老师中文}{指导老师英文}
-\date{2013}{4}{1}
+\supervisor{指导老师中文}{指导老师英文} % 可选
+\date{2013}{6}{1}
 
 \zhabstract{中文摘要}
 \zhkeywords{中文关键字}
@@ -528,6 +529,253 @@
 %
 % \part{Usage of English Version Template}\label{part:Usage of English Version Template}
 %
+% \section{Requirement}
+% Install the latest version of \href{http://www.tug.org/texlive/}{\texttt{Texlive}}(Recommend) or \href{http://miktex.org/}{\texttt{MiKTex}}. Please ensure that all the packages are up-to-date.
+%
+% \section{Installiation}
+%
+% \subsection{Install into local}
+%
+% Use the command below to install this template into local.
+% \begin{verbatim}
+%    make install
+% \end{verbatim}
+% If you need uninstall it, use the command below.
+% \begin{verbatim}
+%    make uninstall
+% \end{verbatim}
+%
+% For Windows User who don't install \texttt{Make}, use the command below to install. 
+% \begin{verbatim}
+%     makewin32.bat install
+% \end{verbatim}
+% If you need uninstall it, use the command below.
+% \begin{verbatim}
+%     makewin32.bat uninstall
+% \end{verbatim}
+% Although \texttt{makewin32.bat} behaves much like \texttt{Makefile}, I still
+% recommend you install \texttt{Make} into your Windows. You can download
+% it from \href{http://gnuwin32.sourceforge.net/packages/make.htm}{here}.
+%
+% \subsection{Use without installation}
+%
+% If you want to use this template temporary rather than installing it into local for long term use. Run below command to unpack the package.
+% \begin{verbatim}
+%     make unpack
+% \end{verbatim}
+% For Windows User who don't install \texttt{Make}, use the command below to unpack the package.
+% \begin{verbatim}
+%     makewin32.bat unpack
+% \end{verbatim}
+% Then copy the file \texttt{itecreport-en.cls} from directory \texttt{itecreport} into your \TeX{} project root directory.
+%
+% \section{Usage}
+% 
+% \begin{importantnote}
+% This template can only be compiled by \\
+% \hskip 10pt \textnormal{\XeLaTeX} or\textnormal{\LuaLaTeX}(Recommend).
+% \end{importantnote}
+% 
+% Insert below code in the top of source code to use this template:
+% \begin{verbatim}
+%     \documentclass{itecreport-en}
+% \end{verbatim}
+%
+% \subsection{Variables setting}
+% 
+% There're some commands which are used to set the variables for the report.
+% 
+% \begin{function}{\reportno}
+%     \begin{syntax}
+%     \cs{reportno}\Arg{Report Number}
+%     \end{syntax}
+%     Set report number if you have. Otherwise it will not be shown in tiltepage.
+% \end{function}
+% 
+% \begin{function}{\title}
+%     \begin{syntax}
+%     \cs{title}\Arg{title}
+%     \end{syntax}
+%     Set title.
+% \end{function}
+% 
+% \begin{function}{\author}
+%     \begin{syntax}
+%     \cs{author}\Arg{author}
+%     \end{syntax}
+%     Set author.
+% \end{function}
+% 
+% \begin{function}{\date}
+%     \begin{syntax}
+%     \cs{date}\Arg{Year}\Arg{Month}\Arg{Day}
+%     \end{syntax}
+%     Set date. If you don't set it, template will use current date.
+% \end{function}
+% 
+% \begin{function}{\supervisor}
+%     \begin{syntax}
+%     \cs{supervisor}\Arg{supervisor}
+%     \end{syntax}
+%     Set your supervisor if you have. Otherwise it will not be shown in tiltepage.
+% \end{function}
+% 
+% \begin{function}{\abstract}
+%     \begin{syntax}
+%     \cs{abstract}\Arg{abstract}
+%     \end{syntax}
+%     Put your abstract.
+% \end{function}
+% 
+% \begin{function}{\keywords}
+%     \begin{syntax}
+%     \cs{keywords}\Arg{keywords}
+%     \end{syntax}
+%     Put your keywords.
+% \end{function}
+% 
+% \subsection{Other commands}
+% 
+% \begin{function}{\frontmatter,\mainmatter,\backmatter}
+%     Used to determine the different part of document. You can see the example at \autoref{sec:simple-example}.
+% \end{function}
+% 
+% \begin{function}{\maketitle,\makecover}
+%     \verb+\maketitle+ and \verb+\makecover+ are the same. Used to create the title page.
+% \end{function}
+% 
+% \begin{function}{\makeabstract}
+%     Used to create abstract page.
+% \end{function}
+% 
+% \begin{function}{\tableofcontents}
+%     Used to create table of contents.
+% \end{function}
+% 
+% \begin{function}{\dateformat}
+%     Used to print the date.
+% \end{function}
+% 
+% \vskip 1ex\DescribeEnv{ack}
+%     The \verb+ack+ environment is used to create acknowledge page.
+%     \begin{verbatim}
+%     \begin{ack}
+%         <content>
+%     \end{ack}
+%     \end{verbatim}
+% 
+% \begin{function}{\bibliography}
+%     \begin{syntax}
+%     \cs{bibliography}\Arg{.bib file}
+%     \end{syntax}
+%     Used to create bibliography page.
+% \end{function}
+% 
+% \vskip 1ex\DescribeEnv{appendix}
+%     The \verb+appendix+ environment is for appendix of course. Used like this:
+%     \begin{verbatim}
+%     \begin{appendix}
+%         <content>
+%     \end{appendix}
+%     \end{verbatim}
+% \begin{function}{\appendix}
+%     Or simple use \verb+\appendix+ to indicate that the rest of document are all in appendix, like this:
+%     \begin{verbatim}
+%     \appendix
+%     <content>
+%     \end{verbatim}
+% \end{function}
+% 
+% \begin{function}{\listoffigures,\listoftables}
+%     Create the index for all the figures and tables separately.
+% \end{function}
+% 
+% \vskip 1ex\DescribeEnv{publications}
+%     The \verb+publications+ environment is where you list all of your published thesises. It's usually putted in appendix. 
+%     \begin{verbatim}
+%     \begin{publications}
+%         \item <thesis>
+%         <...>
+%     \end{publications}
+%     \end{verbatim}
+% 
+% \begin{function}{\TurnOffTabFontSetting,\TurnOnTabFontSetting}
+%     This template has set the font size and line spread for all the tables which makes it's impossible to change font format temporary in one table.  So it provides these to command to temporary disable or enable default font setting in table. For example, if you want to change table font size, you can use the code like this:
+%     \begin{verbatim}
+%     \begingroup
+%     \TurnOffTabFontSetting
+%     \footnotesize % Set your font format as you like.
+%     \begin{tabular}{...}
+%         <content>
+%     \end{tabular}
+%     \TurnOnTabFontSetting
+%     \endgroup
+%     \end{verbatim}
+% \end{function}
+%
+% \section{Simple example}\label{sec:simple-example}
+% Below is a simple example of using this template. For a complete example see \texttt{itecreport-en-example.tex} which will generate \href{https://github.com/michael911009/itecreport/raw/master/itecreport/itecreport-en-example.pdf}{\texttt{itecreport-en-example.pdf}}.
+% 
+%<*driver>
+% \begin{lstlisting}[language={[LaTeX]TeX}]
+\documentclass{itecreport-en}
+
+\reportno{12345} % Optional
+\title{your title}
+\author{your name}
+\supervisor{your supervisor} % Optional
+\date{2013}{6}{1} 
+
+\abstract{the abstract}
+\keywords{the keywords}
+
+\begin{document}
+
+\frontmatter
+\maketitle
+\makeabstract
+\tableofcontents
+\listoffigures
+\listoftables
+\mainmatter
+
+%% main body
+
+\backmatter
+
+\begin{ack}
+%% acknowledge
+\end{ack}
+\bibliography{.bib file}
+
+\appendix
+
+\begin{publications}
+%% your publications
+\end{publications}
+
+%% rest of appendix
+
+\end{document}
+% \end{lstlisting}
+%</driver>
+%
+% \section{Introduction to some packages used in the template}
+% 
+% Here's a list of some packages used in the template.
+% 
+% \begin{itemize}
+%     \item \href{http://mirrors.ctan.org/help/Catalogue/entries/algorithm2e.html}{\textsf{algorithm2e}} For display algorithm.
+%     \item \href{http://mirrors.ctan.org/help/Catalogue/entries/enumitem.html}{\textsf{enumitem}} For set the style of enumerate, itemize and description environment.
+%     \item \href{http://mirrors.ctan.org/help/Catalogue/entries/fancynum.html}{\textsf{fancynum}} Display the really big number.
+%     \item \href{http://mirrors.ctan.org/help/Catalogue/entries/listings.html}{\textsf{listings}} For display the highlighted code. If you need better quality, use the package \href{http://mirrors.ctan.org/help/Catalogue/entries/minted.html}{\textsf{minted}}.
+%     \item \href{http://mirrors.ctan.org/help/Catalogue/entries/longtable.html}{\textsf{longtable}} Create a very long table.
+%     \item \href{http://mirrors.ctan.org/help/Catalogue/entries/ltxtable.html}{\textsf{ltxtable}} Combine the features of \textsf{longtable} anb \textsf{tabularx}.
+%     \item \href{http://mirrors.ctan.org/help/Catalogue/entries/multirow.html}{\textsf{multirow}} Combine multi-rows in table.
+%     \item \href{http://mirrors.ctan.org/help/Catalogue/entries/overpic.html}{\textsf{overpic}} Put something over a picture,
+%     \item \href{http://mirrors.ctan.org/help/Catalogue/entries/tabularx.html}{\textsf{tabularx}} A better table environment.
+%     \item \href{http://mirrors.ctan.org/help/Catalogue/entries/xypic.html}{\textsf{xy-pic}} To draw some picture. If you need more advanced features, use the package \href{http://mirrors.ctan.org/help/Catalogue/entries/pgf.html}{\textsf{tikz}}.
+% \end{itemize}
 %
 % \StopEventually{
 %  \begingroup
