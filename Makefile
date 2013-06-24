@@ -15,10 +15,10 @@ example:example-zh example-en
 unpack:FORCE
 	make -C ./itecreport unpack
 
-example-zh ./example/itecreport-zh-example.pdf:
+example-zh ./itecreport/itecreport-zh-example.pdf:
 	make -C ./itecreport example-zh
 
-example-en ./example/itecreport-en-example.pdf:
+example-en ./itecreport/itecreport-en-example.pdf:
 	make -C ./itecreport example-en
 
 doc ./itecreport/itecreport.pdf:
