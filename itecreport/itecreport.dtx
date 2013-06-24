@@ -91,6 +91,25 @@
 \setlist[enumerate,2]{label*=\arabic*}
 \setlist[enumerate,3]{label=\emph{\alph*})}
 
+\usepackage{listings}
+\definecolor{lstgreen}{rgb}{0,0.6,0}
+\definecolor{lstgray}{rgb}{0.5,0.5,0.5}
+\definecolor{lstmauve}{rgb}{0.58,0,0.82}
+\lstset{
+  basicstyle=\footnotesize\ttfamily\FANGSONG,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{lstgreen}\itshape\KAI,
+  stringstyle=\color{lstmauve},
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  numbers=left,
+  numberstyle=\tiny\color{lstgray},
+  frame=lines,
+  rulecolor=\color{black},
+  breaklines=true
+}
+
 \AtBeginEnvironment{verbatim}{\small}
 \let\AltMacroFont\MacroFont
 
@@ -202,6 +221,310 @@
 % Read \autoref{part:中文模板使用方法} and \autoref{part:Usage of English Version Template} for usage of Chinese version and English version template separately. The \autoref{part:Implementation} is the implementation of this template.
 %
 % \part{中文模板使用方法}\label{part:中文模板使用方法}
+%
+% \section{使用必要条件}
+%
+% \begin{enumerate}
+%     \item 安装最新版本的\href{http://www.tug.org/texlive/}{\texttt{Texlive}}（推荐）或\href{http://miktex.org/}{\texttt{MiKTex}}。因为未及时更新的宏包可能存在未修复的bug，请确保所有宏包都更新至最新。
+%     \item 安装如下中文字体\footnote{本模板所用到的英文字体\textsf{Tex Gyre Termes}，\textsf{Droid Sans}和\textsf{CMU Typewriter Text}均默认安装于\textsf{Texlive}和\textsf{MiKTex}中。}：
+%     \begin{enumerate}[label=\emph{\alph*})]
+%         \item \textsf{AdobeSongStd-Light}
+%         \item \textsf{AdobeKaitiStd-Regular}
+%         \item \textsf{AdobeHeitiStd-Regular}
+%         \item \textsf{AdobeFangsongStd-Regular}
+%     \end{enumerate}
+%     \begin{informationnote}
+%     如果使用\textnormal{\LuaTeX}，安装字体之后需运行命令\verb+mkluatexfontdb+生成字体索引。
+%     \end{informationnote}
+% \end{enumerate}
+%
+% \section{安装}
+%
+% \subsection{安装到本地}
+%
+% 使用如下命令即可安装本模板到本地：
+% \begin{verbatim}
+%     make install
+% \end{verbatim}
+% 如需卸载，则使用如下命令：
+% \begin{verbatim}
+%     make uninstall
+% \end{verbatim}
+%
+% 对于没有安装\verb+Make+的Windows系统用户，可以使用如下命令安装：
+% \begin{verbatim}
+%     makewin32.bat install
+% \end{verbatim}
+% 如需卸载，则使用如下命令：
+% \begin{verbatim}
+%     makewin32.bat uninstall
+% \end{verbatim}
+% 虽然\verb+makewin32.bat+表现与\verb+Makefile+极其相似，但是还是强烈建议你安装\verb+Make+，对于Windows用户可以在\href{http://gnuwin32.sourceforge.net/packages/make.htm}{这里}下载。
+%
+% \subsection{免安装使用}
+%
+% 如果你希望临时使用本模板，而非安装到本地供长期使用。使用如下命令解压模板文件：
+% \begin{verbatim}
+%     make unpack
+% \end{verbatim}
+% 对于没有安装\verb+Make+的Windows系统用户，则使用如下命令解压：
+% \begin{verbatim}
+%     makewin32.bat unpack
+% \end{verbatim}
+%
+% 再将\verb+itecreport+目录下的\verb+itecreport-zh.cls+文件拷贝到你\TeX{}工程根目录下即可。
+%
+% \section{基本用法}
+%
+% \begin{importantnote}
+% 本文档只能使用\textnormal{\XeLaTeX}或\textnormal{\LuaLaTeX}（推荐）编译。
+% \end{importantnote}
+%
+% 在源文件开头处选择加载本文档类型，即可使用本模板，如下所示：
+% \begin{verbatim}
+%     \documentclass{itecreport-zh}
+% \end{verbatim}
+%
+% \subsection{基本字段设置}
+%
+% 模板中定义一些命令用于设置文档中的字段。其中一部分命令是以\verb+\zhX{<Chinese var>}+，\verb+\enX{<English var>}+和\verb+\X{<Chinese var>}{<English var>}+的形式出现，他们分别意味着设置字段\verb+X+的中文部分，英文部分及一同设定。
+%
+% \begin{function}{\reportno}
+%     \begin{syntax}
+%     \cs{reportno}\Arg{Report Number}
+%     \end{syntax}
+%     该命令用于设置文档编号。该命令是可选的，如果不加以设定，封面处不会显示相应项。
+% \end{function}
+%
+% \begin{function}{\zhtitle,\entitle,\title}
+%     \begin{syntax}
+%     \cs{zhtitle}\Arg{Chinese title}
+%     \cs{entitle}\Arg{English title}
+%     \cs{title}\Arg{Chinese title}\Arg{English title}
+%     \end{syntax}
+%     这一组命令用于设定文档的中英文标题。
+% \end{function}
+%
+% \begin{function}{\zhauthor,\enauthor,\author}
+%     \begin{syntax}
+%     \cs{zhauthor}\Arg{Chinese author}
+%     \cs{enauthor}\Arg{English author}
+%     \cs{author}\Arg{Chinese author}\Arg{English author}
+%     \end{syntax}
+%     这一组命令用于设定文档的中英文作者名。
+% \end{function}
+%
+% \begin{function}{\date}
+%     \begin{syntax}
+%     \cs{date}\Arg{Year}\Arg{Month}\Arg{Day}
+%     \end{syntax}
+%     该命令用于设定文档的日期。如果不设定，则会选择当前编译日期作为文档的日期。
+% \end{function}
+%
+% \begin{function}{\zhsupervisor,\ensupervisor,\supervisor}
+%     \begin{syntax}
+%     \cs{zhsupervisor}\Arg{Chinese supervisor}
+%     \cs{ensupervisor}\Arg{English supervisor}
+%     \cs{supervisor}\Arg{Chinese supervisor}\Arg{English supervisor}
+%     \end{syntax}
+%     这一组命令用于设定文档的中英文指导老师名（含职称）。该命令是可选的，如果不加以设定，封面处不会显示相应项。
+% \end{function}
+%
+% \begin{function}{\zhabstract,\enabstract,\abstract}
+%     \begin{syntax}
+%     \cs{zhabstract}\Arg{Chinese abstract}
+%     \cs{enabstract}\Arg{English abstract}
+%     \cs{abstract}\Arg{Chinese abstract}\Arg{English abstract}
+%     \end{syntax}
+%     这一组命令用于设定文档的中英文摘要。
+% \end{function}
+%
+% \begin{function}{\zhkeywords,\enkeywords,\keywords}
+%     \begin{syntax}
+%     \cs{zhkeywords}\Arg{Chinese keywords}
+%     \cs{enkeywords}\Arg{English keywords}
+%     \cs{keywords}\Arg{Chinese keywords}\Arg{English keywords}
+%     \end{syntax}
+%     这一组命令用于设定文档的中英文关键字。
+% \end{function}
+%
+% \subsection{其它基本命令}
+%
+% 下面来介绍其它基本命令。
+%
+% \begin{function}{\frontmatter,\mainmatter,\backmatter}
+%     这一组命令用于设定论文的状态、改变样式，其具体使用见\nameref{subsec:简单示例}。\verb+\frontmatter+用在文档最开始，表明文档的前言部分（如封面，摘要，目录等）的开始。\verb+\mainmatter+表示论文正文的开始。\verb+\backmatter+表示论文正文的结束。
+% \end{function}
+%
+% \begin{function}{\maketitle,\makecover}
+%     \verb+\maketitle+和\verb+\makecover+作用相同，用于生成封面和版权页面。
+% \end{function}
+%
+% \begin{function}{\makeabstract}
+%     用于生成中英文摘要页面。
+% \end{function}
+%
+% \begin{function}{\tableofcontents}
+%     用于生成目录。
+% \end{function}
+%
+% \begin{function}{\zhdateformat,\endateformat}
+%     用于打印中英文日期。
+% \end{function}
+%
+% \vskip 1ex\DescribeEnv{ack}
+%     \verb+ack+环境用于致谢页面。使用方法如下：
+%     \begin{verbatim}
+%     \begin{ack}
+%         <content>
+%     \end{ack}
+%     \end{verbatim}
+%
+% \begin{function}{\bibliography}
+%     \begin{syntax}
+%     \cs{bibliography}\Arg{.bib file}
+%     \end{syntax}
+%     用于生成参考文献。
+% \end{function}
+%
+% \vskip 1ex\DescribeEnv{appendix}
+%     \verb+appendix+环境用于附录环境。你可以将附录置于\verb+appendix+环境中，如：
+%     \begin{verbatim}
+%     \begin{appendix}
+%         <content>
+%     \end{appendix}
+%     \end{verbatim}
+% \begin{function}{\appendix}
+%     或者使用\verb+\appendix+代表后文均为附录，如：
+%     \begin{verbatim}
+%     \appendix
+%     <content>
+%     \end{verbatim}
+% \end{function}
+%
+% \begin{function}{\listoffigures,\listoftables}
+%     这两个命令分别用于生成图片和表格索引，可以根据要求在论文前言中使用或附录中使用。
+% \end{function}
+%
+% \vskip 1ex\DescribeEnv{publications}
+%     \verb+publications+环境用于已发表论文页面。一般用于附录中。使用上同\verb+enumerate+环境。如下：
+%     \begin{verbatim}
+%     \begin{publications}
+%         \item <thesis>
+%         <...>
+%     \end{publications}
+%     \end{verbatim}
+% \begin{function}{\TurnOffTabFontSetting,\TurnOnTabFontSetting}
+%     因为模板中设定了表格的行距和字号，使得使用中无法临时自定义表格的行距和字号。故提供两个命令用于关闭和开启默认表格的行距和字号设置。比如你如果需要输出一个自己定义字号的表格，可以使用如下示例：
+%     \begin{verbatim}
+%     \begingroup
+%     \TurnOffTabFontSetting
+%     \footnotesize % 设置字号
+%     \begin{tabular}{...}
+%         <content>
+%     \end{tabular}
+%     \TurnOnTabFontSetting
+%     \endgroup
+%     \end{verbatim}
+% \end{function}
+%
+% \section{简单示例}\label{subsec:简单示例}
+% 如下为一个使用本模板的简单示例。更完整的例子请见\texttt{hustthesis-example.tex}文件，其效果见\href{https://github.com/michael911009/itecreport/raw/master/itecreport/itecreport-zh% -example.pdf}{\texttt{hustthesis-example.pdf}}。
+% 
+%<*driver>
+% \begin{lstlisting}[language={[LaTeX]TeX}]
+\documentclass{itecreport-zh}
+
+\title{中文标题}{英文标题}
+\author{作者名}{作者名拼音}
+\supervisor{指导老师中文}{指导老师英文}
+\date{2013}{4}{1}
+
+\zhabstract{中文摘要}
+\zhkeywords{中文关键字}
+\enabstract{英文摘要}
+\enkeywords{英文关键字}
+
+\begin{document}
+
+\frontmatter
+\maketitle
+\makeabstract
+\tableofcontents
+\listoffigures
+\listoftables
+\mainmatter
+
+%% 正文
+
+\backmatter
+
+\begin{ack}
+%% 致谢
+\end{ack}
+\bibliography{参考文献.bib文件}
+
+\appendix
+
+\begin{publications}
+%% 发表过的论文列表
+\end{publications}
+
+%% 附录剩余部分
+
+\end{document}
+% \end{lstlisting}
+%</driver>
+%
+% \section{预设宏包介绍}
+%
+% 本模板中预设了一些宏包，下面对其进行简单介绍。
+%
+% \begin{itemize}
+%     \item \href{http://mirrors.ctan.org/help/Catalogue/entries/algorithm2e.html}{\textsf{algorithm2e}} 算法环境。
+%     \item \href{http://mirrors.ctan.org/help/Catalogue/entries/enumitem.html}{\textsf{enumitem}} 自定义列表环境的式样。
+%     \item \href{http://mirrors.ctan.org/help/Catalogue/entries/fancynum.html}{\textsf{fancynum}} 用于将大数每三位断开。
+%     \item \href{http://mirrors.ctan.org/help/Catalogue/entries/listings.html}{\textsf{listings}} 代码环境。如需更好的代码高亮可以使用\href{http://mirrors.ctan.org/help/Catalogue/entries/minted.html}{\textsf{minted}}宏包。
+%     \item \href{http://mirrors.ctan.org/help/Catalogue/entries/longtable.html}{\textsf{longtable}} 跨页的超长表格环境。
+%     \item \href{http://mirrors.ctan.org/help/Catalogue/entries/ltxtable.html}{\textsf{ltxtable}} \textsf{longtable}环境和\textsf{tabularx}环境的合并。
+%     \item \href{http://mirrors.ctan.org/help/Catalogue/entries/multirow.html}{\textsf{multirow}} 用于表格中合并行。
+%     \item \href{http://mirrors.ctan.org/help/Catalogue/entries/overpic.html}{\textsf{overpic}} 用于在图片上层叠其他内容。
+%     \item \href{http://mirrors.ctan.org/help/Catalogue/entries/tabularx.html}{\textsf{tabularx}} 扩展到表格环境。
+%     \item \href{http://mirrors.ctan.org/help/Catalogue/entries/xypic.html}{\textsf{xy-pic}} 用于绘制简单图形。如需更高级功能可以使用\href{http://mirrors.ctan.org/help/Catalogue/entries/pgf.html}{\textsf{tikz}}宏包。
+%     \item \href{http://mirrors.ctan.org/help/Catalogue/entries/zhnumber.html}{\textsf{zhnumber}} 用于生成中文数字。
+% \end{itemize}
+%
+% \section{高级设置}
+%
+% \subsection{切换字体}
+%
+% 模板正文字体为宋体（\textsf{AdobeSongStd-Light}），同时我们提供如下命令切换中文字体：
+%
+% \begin{function}{\HEI,\hei}
+%     \begin{syntax}
+%     \{\cs{HEI} \meta{content}\}
+%     \cs{hei}\Arg{content}
+%     \end{syntax}
+%     切换字体为黑体（\textsf{AdobeHeitiStd-Regular}）。
+% \end{function}
+%
+% \begin{function}{\KAI,\kai}
+%     \begin{syntax}
+%     \{\cs{KAI} \meta{content}\}
+%     \cs{kai}\Arg{content}
+%     \end{syntax}
+%     切换字体为楷体（\textsf{AdobeKaitiStd-Regular}）。
+% \end{function}
+%
+% \begin{function}{\FANGSONG,\fangsong}
+%     \begin{syntax}
+%     \{\cs{FANGSONG} \meta{content}\}
+%     \cs{fangsong}\Arg{content}
+%     \end{syntax}
+%     切换字体为仿宋（\textsf{AdobeFangsongStd-Regular}）。
+% \end{function}
+%
+% 如果需要加载其他字体，请参阅宏包\href{http://mirrors.ctan.org/help/Catalogue/entries/fontspec.html}{\textsf{fontspec}}，宏包\href{http://mirrors.ctan.org/help/Catalogue/entries/xecjk.html}{\textsf{xeCJK}}（对于\XeLaTeX{}）和宏包\href{http://mirrors.ctan.org/help/Catalogue/entries/luatexja.html}{\textsf{luatex-ja}}（对于\LuaLaTeX{}）的文档。
 %
 % \part{Usage of English Version Template}\label{part:Usage of English Version Template}
 %
@@ -929,6 +1252,14 @@
 %    \end{macrocode}
 %
 % \section{Variables Setting}
+% A command to set report number.
+% \begin{macro}{\reportno}
+%    \begin{macrocode}
+\def\reportno#1{\gdef\ITEC@reportno{#1}}
+\reportno{}
+%    \end{macrocode}
+% \end{macro}
+%
 % \begin{macro}{\zhtitle,\entitle,\title}
 % Commands to set the title.
 %    \begin{macrocode}
@@ -1054,7 +1385,13 @@
 %<*class-zh>
 \def\ITEC@zhtitlepage{
   \begin{center}
-  \null
+  \ifthenelse{\equal{\ITEC@reportno}{}}{
+    \null
+  }{
+    \begin{flushright}
+    {\Large \ttfamily No.~\ITEC@reportno}
+    \end{flushright}
+  }
   \vskip 2cm
   {\LARGE \ITEC@zhtitletitle}\\[0.5cm]
   \rule{\linewidth}{0.5mm}\\[0.55cm]
@@ -1087,7 +1424,13 @@
 %    \begin{macrocode}
 \def\ITEC@entitlepage{
   \begin{center}
-  \null
+  \ifthenelse{\equal{\ITEC@reportno}{}}{
+    \null
+  }{
+    \begin{flushright}
+    {\Large \ttfamily No.~\ITEC@reportno}
+    \end{flushright}
+  }
   \vskip 1.5cm
   {\Large \scshape \ITEC@entitletitle}\\[0.5cm]
   \rule{\linewidth}{0.5mm}\\[0.55cm]
@@ -1377,6 +1720,7 @@
 %<example-zh>\documentclass{itecreport-zh}
 %<example-en>\documentclass{itecreport-en}
 
+\reportno{12345}
 %<example-zh>\title{\LaTeX 模板使用示例}{An Example of Using itecreport-zh \LaTeX{} Template}
 %<example-en>\title{An Example of Using itecreport-en \LaTeX{} Template}
 \author
