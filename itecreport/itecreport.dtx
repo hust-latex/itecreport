@@ -160,13 +160,17 @@
 \CodelineIndex
 \RecordChanges
 
+\def\email#1{
+  \href{mailto:#1}{\texttt{#1}}
+}
+
 \begin{document}
 \DocInput{itecreport.dtx}
 \end{document}
 %</driver>
 % \fi
 %
-% \CheckSum{1175}
+% \CheckSum{1180}
 %
 % \iffalse
 %<*!(readme|example-bib|example-eps)>
@@ -204,10 +208,13 @@
 %
 % \title{A Report Template for Internet Technology and Engineering R\&D Center of HUST: the \textsf{itecreport-zh} and \textsf{itecreport-en} class
 % \thanks{This document corresponds to \textsf{itecreport-zh.cls} and \textsf{itecreport-en.cls} ~\fileversion, dated \filedate.}}
-% \author{Xu Cheng \\ \texttt{xucheng@me.com}}
+% \author{Xu Cheng \\ \email{xucheng@me.com}}
 % \date{2013/06/01}
 %
+% \begingroup
+% \hypersetup{allcolors=black}
 % \maketitle
+% \endgroup
 % \tableofcontents
 %
 % \part{Introduction}
@@ -414,6 +421,7 @@
 %         <...>
 %     \end{publications}
 %     \end{verbatim}
+%
 % \begin{function}{\TurnOffTabFontSetting,\TurnOnTabFontSetting}
 %     因为模板中设定了表格的行距和字号，使得使用中无法临时自定义表格的行距和字号。故提供两个命令用于关闭和开启默认表格的行距和字号设置。比如你如果需要输出一个自己定义字号的表格，可以使用如下示例：
 %     \begin{verbatim}
@@ -428,13 +436,20 @@
 %     \end{verbatim}
 % \end{function}
 %
+% \begin{function}{\email}
+%     \begin{syntax}
+%     \cs{email}\Arg{Email Address}
+%     \end{syntax}
+%     用于生成邮箱地址。如\verb+\email{name@example.com}+会生成如下效果的地址：\email{name@example.com}。
+% \end{function}
+%
 % \section{简单示例}\label{sec:简单示例}
 % 如下为一个使用本模板的简单示例。更完整的例子请见\texttt{itecreport-zh-example.tex}文件，其效果见\href{https://github.com/michael911009/itecreport/raw/master/itecreport/itecreport-zh-example.pdf}{\texttt{itecreport-zh-example.pdf}}。
 %
 % \iffalse 
 %<*driver>
 % \fi
-% \begin{lstlisting}[language={[LaTeX]TeX}]
+\begin{lstlisting}[language={[LaTeX]TeX}]
 \documentclass{itecreport-zh}
 
 \reportno{12345} % 可选
@@ -476,7 +491,7 @@
 %% 附录剩余部分
 
 \end{document}
-% \end{lstlisting}
+\end{lstlisting}
 % \iffalse 
 %</driver>
 % \fi
@@ -716,13 +731,20 @@
 %     \end{verbatim}
 % \end{function}
 %
+% \begin{function}{\email}
+%     \begin{syntax}
+%     \cs{email}\Arg{Email Address}
+%     \end{syntax}
+%     A command to display email address. For example, \verb+\email{name@example.com}+ would look like this: \email{name@example.com}.
+% \end{function}
+%
 % \section{Simple example}\label{sec:simple-example}
 % Below is a simple example of using this template. For a complete example see \texttt{itecreport-en-example.tex} which will generate \href{https://github.com/michael911009/itecreport/raw/master/itecreport/itecreport-en-example.pdf}{\texttt{itecreport-en-example.pdf}}.
 % 
 % \iffalse 
 %<*driver>
 % \fi
-% \begin{lstlisting}[language={[LaTeX]TeX}]
+\begin{lstlisting}[language={[LaTeX]TeX}]
 \documentclass{itecreport-en}
 
 \reportno{12345} % Optional
@@ -762,7 +784,7 @@
 %% rest of appendix
 
 \end{document}
-% \end{lstlisting}
+\end{lstlisting}
 % \iffalse 
 %</driver>
 % \fi
@@ -1162,8 +1184,8 @@
 %    \begin{macrocode}
 %<*class-en|class-zh>
 \long\def\ITEC@entitletitle{Huazhong University of Science and Technology\\Department of Electronics and Information Engineering\\Internet Technology and Engineering R\char38D Center\\[0.8cm]Technical Report}
-\def\ITEC@enauthortitle{Author:}
-\def\ITEC@ensupervisortitle{Supervisor:}
+\def\ITEC@enauthortitle{Author}
+\def\ITEC@ensupervisortitle{Supervisor}
 \def\ITEC@enabstractname{Abstract}
 \def\ITEC@enkeywordstitle{Key words:}
 %</class-en|class-zh>
@@ -1173,8 +1195,8 @@
 %</class-en>
 %<*class-zh>
 \long\def\ITEC@zhtitletitle{华中科技大学 电子与信息工程系\\湖北省智能互联网技术重点实验室\\[0.8cm]技术报告}
-\def\ITEC@zhauthortitle{作者：}
-\def\ITEC@zhsupervisortitle{指导教师：}
+\def\ITEC@zhauthortitle{作者}
+\def\ITEC@zhsupervisortitle{指导教师}
 \def\ITEC@zhabstractname{摘\hspace{1em}要}
 \def\ITEC@zhabstractnamenospace{摘要}
 \def\ITEC@zhkeywordstitle{关键词：}
@@ -1652,21 +1674,20 @@
   \rule{\linewidth}{0.5mm}\\[0.55cm]
   {\LARGE \bfseries \sffamily \HEI \ITEC@zhtitle}\\[0.35cm]
   \rule{\linewidth}{0.5mm}\\[3.5cm]
-  \begin{minipage}[t]{0.4\textwidth}
-    \begin{flushleft}
-    \emph{\Large \ITEC@zhauthortitle}\\
-    \Large \ITEC@zhauthor
-    \end{flushleft}
-  \end{minipage}
-  \begin{minipage}[t]{0.4\textwidth}
-  \ifthenelse{\equal{\ITEC@zhsupervisor}{}}{
-    \hfill
-  }{ 
-    \begin{flushright}
-    \emph{\Large \ITEC@zhsupervisortitle} \\
-    \Large \ITEC@zhsupervisor
-    \end{flushright}   
-  }
+  \begin{minipage}[t]{0.8\textwidth}
+  \TurnOffTabFontSetting
+  \Large
+  \setlength{\extrarowheight}{5pt}
+  \begin{tabular}{r@{：}l}
+    \parbox[t][][t]{6em}{\raggedleft \emph{\ITEC@zhauthortitle}} &
+    \parbox[t][][t]{15em}{\ITEC@zhauthor}
+    \ifthenelse{\equal{\ITEC@zhsupervisor}{}}{}{
+    \\
+    \parbox[t][][t]{6em}{\raggedleft \emph{\ITEC@zhsupervisortitle}} &
+    \parbox[t][][t]{15em}{\ITEC@zhsupervisor}
+    }
+  \end{tabular}
+  \TurnOnTabFontSetting
   \end{minipage}
   \vfill
   {\Large \zhdateformat}
@@ -1691,21 +1712,20 @@
   \rule{\linewidth}{0.5mm}\\[0.55cm]
   {\LARGE \bfseries \sffamily \ITEC@entitle}\\[0.35cm]
   \rule{\linewidth}{0.5mm}\\[3.5cm]
-  \begin{minipage}[t]{0.4\textwidth}
-    \begin{flushleft}
-    \emph{\Large \ITEC@enauthortitle}\\
-    \Large \ITEC@enauthor
-    \end{flushleft}
-  \end{minipage}
-  \begin{minipage}[t]{0.4\textwidth}
-  \ifthenelse{\equal{\ITEC@ensupervisor}{}}{
-    \hfill
-  }{ 
-    \begin{flushright}
-    \emph{\Large \ITEC@ensupervisortitle} \\
-    \Large \ITEC@ensupervisor
-    \end{flushright}   
-  }
+  \begin{minipage}[t]{0.8\textwidth}
+  \TurnOffTabFontSetting
+  \Large
+  \setlength{\extrarowheight}{5pt}
+  \begin{tabular}{r@{~:~}l}
+    \parbox[t][][t]{6em}{\raggedleft \emph{\ITEC@enauthortitle}} &
+    \parbox[t][][t]{15em}{\ITEC@enauthor}
+    \ifthenelse{\equal{\ITEC@ensupervisor}{}}{}{
+    \\
+    \parbox[t][][t]{6em}{\raggedleft \emph{\ITEC@ensupervisortitle}} &
+    \parbox[t][][t]{15em}{\ITEC@ensupervisor}
+    }
+  \end{tabular}
+  \TurnOnTabFontSetting
   \end{minipage}
   \vfill
   {\Large \endateformat}
@@ -1717,6 +1737,8 @@
 % Commands to generate title page.
 %    \begin{macrocode}
 \def\maketitle{
+  \begingroup
+  \hypersetup{allcolors=black}
   \let\ITEC@oldthepage\thepage
 %<class-zh>\def\thepage{封面}
 %<class-en>\def\thepage{Titlepage}
@@ -1731,6 +1753,7 @@
   \end{titlepage}
   \let\thepage\ITEC@oldthepage
   \setcounter{page}{1}
+  \endgroup
 }
 \let\makecover\maketitle
 %    \end{macrocode}
@@ -1957,6 +1980,15 @@
   \ITEC@listoftables
   \let\markboth\ITEC@oldmarkboth
   \def\listtablename{\ITEC@listtablename}
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \section{Other Command}
+% \begin{macro}{\email}
+%    \begin{macrocode}
+\def\email#1{
+  \href{mailto:#1}{\texttt{#1}}
 }
 %    \end{macrocode}
 % \end{macro}
