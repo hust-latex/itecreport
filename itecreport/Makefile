@@ -64,4 +64,8 @@ reallyclean:
 			*.vrb *.xdy *.tdo \
 			*.cls *.tex *.md *.bib itecreport*.pdf
 
-.PHONY:all unpack class doc example example-zh example-en clean reallyclean FORCE
+checksum:FORCE
+	perl adjust_checksum.pl itecreport.dtx
+
+FORCE:
+.PHONY:all unpack class doc example example-zh example-en clean reallyclean checksum FORCE
