@@ -57,8 +57,8 @@ Then copy the file `itecreport-zh.cls` and `itecreport-en.cls` from directory `i
 
 **Important : This template can only be compiled by XeLaTeX or LuaLaTeX[Recommend].**
 
-* Manual: See [itecreport.pdf](https://github.com/michael911009/itecreport/raw/master/itecreport/itecreport.pdf).
-* Example: See [itecreport-zh-example.pdf](https://github.com/michael911009/itecreport/raw/master/itecreport/itecreport-zh-example.pdf) and [itecreport-en-example.pdf](https://github.com/michael911009/itecreport/raw/master/itecreport/itecreport-en-example.pdf).
+* Manual: See [itecreport.pdf](https://github.com/xu-cheng/itecreport/raw/master/itecreport/itecreport.pdf).
+* Example: See [itecreport-zh-example.pdf](https://github.com/xu-cheng/itecreport/raw/master/itecreport/itecreport-zh-example.pdf) and [itecreport-en-example.pdf](https://github.com/xu-cheng/itecreport/raw/master/itecreport/itecreport-en-example.pdf).
 
 ## License
 
