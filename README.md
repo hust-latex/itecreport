@@ -65,7 +65,7 @@ Then copy the file `itecreport-zh.cls` and `itecreport-en.cls` from directory `i
 LPPL v1.3 is chosen to be the license of the project. Use as you desire.
 
 ```
-Copyright (C) 2013 by Xu Cheng <xucheng@me.com>
+Copyright (C) 2013-2014 by Xu Cheng <xucheng@me.com>
 
 This work may be distributed and/or modified under the
 conditions of the LaTeX Project Public License, either version 1.3
@@ -81,5 +81,5 @@ The Current Maintainer of this work is Xu Cheng.
 
 This work consists of the files itecreport.dtx and itecreport.ins
 and the derived file itecreport-zh.cls, itecreport-en.cls and 
-along with its documnet and example files.
+along with its document and example files.
 ```
