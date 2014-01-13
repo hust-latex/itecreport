@@ -83,3 +83,5 @@ This work consists of the files itecreport.dtx and itecreport.ins
 and the derived file itecreport-zh.cls, itecreport-en.cls and 
 along with its document and example files.
 ```
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/xu-cheng/itecreport/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
