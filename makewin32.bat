@@ -50,7 +50,7 @@ call :example-zh
 call :example-en
 goto :exit
 
-example-zh:
+:example-zh
 call :unpack
 pushd itecreport
 lualatex -shell-escape -8bit itecreport-zh-example
@@ -60,7 +60,7 @@ lualatex -shell-escape -8bit itecreport-zh-example
 popd
 goto :exit
 
-example-en:
+:example-en
 call :unpack
 pushd itecreport
 lualatex -shell-escape -8bit itecreport-en-example
