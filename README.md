@@ -1,13 +1,9 @@
 itecreport
 ==========
 
-An Unofficial Technical Report Template in LaTeX for [the Internet Technology and Engineering R&D Center](http://itec.hust.edu.cn/). This template is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+An Unofficial Technical Report Template in LaTeX for [the Internet Technology and Engineering R&D Center](http://itec.hust.edu.cn/). 
 
 This template provides two class files which correspond to Chinese version and English version template separately: `itecreport-zh` and `itecreport-en`.
-
-If these templates are useful for you, you might want to buy me a cup of coffee to keep me fresh. Thanks! :)
-
-[![Buy me a cup of coffee via PayPal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=xucheng@me.com&lc=US&item_name=Donate%20this%20project&item_number=itecreport&no_note=0&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHostedGuest)
 
 ## Requirement
 
@@ -57,15 +53,20 @@ Then copy the file `itecreport-zh.cls` and `itecreport-en.cls` from directory `i
 
 **Important : This template can only be compiled by XeLaTeX or LuaLaTeX[Recommend].**
 
-* Manual: See [itecreport.pdf](https://github.com/xu-cheng/itecreport/raw/master/itecreport/itecreport.pdf).
-* Example: See [itecreport-zh-example.pdf](https://github.com/xu-cheng/itecreport/raw/master/itecreport/itecreport-zh-example.pdf) and [itecreport-en-example.pdf](https://github.com/xu-cheng/itecreport/raw/master/itecreport/itecreport-en-example.pdf).
+* Manual: See [itecreport.pdf](https://github.com/hust-latex/itecreport/raw/master/itecreport/itecreport.pdf).
+* Example: See [itecreport-zh-example.pdf](https://github.com/hust-latex/itecreport/raw/master/itecreport/itecreport-zh-example.pdf) and [itecreport-en-example.pdf](https://github.com/hust-latex/itecreport/raw/master/itecreport/itecreport-en-example.pdf).
+
+## Disclaimer
+
+This template is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 ## License
 
-LPPL v1.3 is chosen to be the license of the project. Use as you desire.
+Original works are done by [Xu Cheng](https://github.com/xu-cheng). LPPL v1.3 is chosen to be the license of the project. Use as you desire.
 
 ```
 Copyright (C) 2013-2014 by Xu Cheng <xucheng@me.com>
+              2014      by hust-latex <https://github.com/hust-latex>
 
 This work may be distributed and/or modified under the
 conditions of the LaTeX Project Public License, either version 1.3
@@ -77,7 +78,7 @@ version 2005/12/01 or later.
 
 This work has the LPPL maintenance status `maintained'.
  
-The Current Maintainer of this work is Xu Cheng.
+The Current Maintainer of this work is hust-latex Organization.
 
 This work consists of the files itecreport.dtx and itecreport.ins
 and the derived file itecreport-zh.cls, itecreport-en.cls and 
