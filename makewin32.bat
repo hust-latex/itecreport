@@ -73,7 +73,7 @@ goto :exit
 :doc
 pushd itecreport
 lualatex -shell-escape -8bit itecreport.dtx
-makeindex -q -s l3doc.ist itecreport
+makeindex -s gind.ist  -o itecreport.ind itecreport.idx
 lualatex -shell-escape -8bit itecreport.dtx
 lualatex -shell-escape -8bit itecreport.dtx
 popd

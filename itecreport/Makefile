@@ -30,7 +30,7 @@ doc:itecreport.pdf
 
 itecreport.pdf:itecreport.dtx
 	@$(TEX) $(^F)
-	@$(INDEX) -s l3doc.ist $(basename $(^F))
+	@$(INDEX) -s gind.ist -o $(basename $(^F)).ind $(basename $(^F)).idx
 	@$(TEX) $(^F)
 	@$(TEX) $(^F)
 
