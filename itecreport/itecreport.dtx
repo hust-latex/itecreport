@@ -15,11 +15,11 @@
 % version 2005/12/01 or later.
 %
 % This work has the LPPL maintenance status `maintained'.
-% 
+%
 % The Current Maintainer of this work is hust-latex Organization.
 %
 % This work consists of the files itecreport.dtx and itecreport.ins
-% and the derived file itecreport-zh.cls, itecreport-en.cls and 
+% and the derived file itecreport-zh.cls, itecreport-en.cls and
 % along with its document and example files.
 %
 % \fi
@@ -136,9 +136,9 @@
 
 \titleformat{\part}
   {
-    \bfseries           
-    \centering               
-    \changefont{size=18pt}  
+    \bfseries
+    \centering
+    \changefont{size=18pt}
   }
   {\thepart}
   {1em}
@@ -220,7 +220,7 @@
 %
 % \part{Introduction}
 %
-% This is a report template for \href{http://itec.hust.edu.cn/}{Internet Technology and Engineering R\&D Center of HUST}. This template is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+% This is a report template for \href{http://itec.hust.edu.cn/}{Internet Technology and Engineering R\&D Center of HUST}. This template is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 %
 % The whole project is published under LPPL v1.3 License at \href{https://github.com/hust-latex/itecreport}{GitHub}.
 %
@@ -447,7 +447,7 @@
 % \section{简单示例}\label{sec:简单示例}
 % 如下为一个使用本模板的简单示例。更完整的例子请见\texttt{itecreport-zh-example.tex}文件，其效果见\href{https://github.com/hust-latex/itecreport/raw/master/itecreport/itecreport-zh-example.pdf}{\texttt{itecreport-zh-example.pdf}}。
 %
-% \iffalse 
+% \iffalse
 %<*driver>
 % \fi
 \begin{lstlisting}[language={[LaTeX]TeX}]
@@ -493,7 +493,7 @@
 
 \end{document}
 \end{lstlisting}
-% \iffalse 
+% \iffalse
 %</driver>
 % \fi
 %
@@ -565,7 +565,7 @@
 %    make uninstall
 % \end{verbatim}
 %
-% For Windows User who don't install \texttt{Make}, use the command below to install. 
+% For Windows User who don't install \texttt{Make}, use the command below to install.
 % \begin{verbatim}
 %     makewin32.bat install
 % \end{verbatim}
@@ -594,87 +594,87 @@
 % This template can only be compiled by \\
 % \hskip 10pt \textnormal{\XeLaTeX} or\textnormal{\LuaLaTeX}(Recommend).
 % \end{importantnote}
-% 
+%
 % Insert below code in the top of source code to use this template:
 % \begin{verbatim}
 %     \documentclass{itecreport-en}
 % \end{verbatim}
 %
 % \subsection{Variables setting}
-% 
+%
 % There're some commands which are used to set the variables for the report.
-% 
+%
 % \begin{function}{\reportno}
 %     \begin{syntax}
 %     \cs{reportno}\Arg{Report Number}
 %     \end{syntax}
 %     Set report number if you have. Otherwise it will not be shown in tiltepage.
 % \end{function}
-% 
+%
 % \begin{function}{\title}
 %     \begin{syntax}
 %     \cs{title}\Arg{title}
 %     \end{syntax}
 %     Set title.
 % \end{function}
-% 
+%
 % \begin{function}{\author}
 %     \begin{syntax}
 %     \cs{author}\Arg{author}
 %     \end{syntax}
 %     Set author.
 % \end{function}
-% 
+%
 % \begin{function}{\date}
 %     \begin{syntax}
 %     \cs{date}\Arg{Year}\Arg{Month}\Arg{Day}
 %     \end{syntax}
 %     Set date. If you don't set it, template will use current date.
 % \end{function}
-% 
+%
 % \begin{function}{\supervisor}
 %     \begin{syntax}
 %     \cs{supervisor}\Arg{supervisor}
 %     \end{syntax}
 %     Set your supervisor if you have. Otherwise it will not be shown in tiltepage.
 % \end{function}
-% 
+%
 % \begin{function}{\abstract}
 %     \begin{syntax}
 %     \cs{abstract}\Arg{abstract}
 %     \end{syntax}
 %     Put your abstract.
 % \end{function}
-% 
+%
 % \begin{function}{\keywords}
 %     \begin{syntax}
 %     \cs{keywords}\Arg{keywords}
 %     \end{syntax}
 %     Put your keywords.
 % \end{function}
-% 
+%
 % \subsection{Other commands}
-% 
+%
 % \begin{function}{\frontmatter,\mainmatter,\backmatter}
 %     Used to determine the different part of document. You can see the example at \autoref{sec:simple-example}.
 % \end{function}
-% 
+%
 % \begin{function}{\maketitle,\makecover}
 %     \verb+\maketitle+ and \verb+\makecover+ are the same. Used to create the title page.
 % \end{function}
-% 
+%
 % \begin{function}{\makeabstract}
 %     Used to create abstract page.
 % \end{function}
-% 
+%
 % \begin{function}{\tableofcontents}
 %     Used to create table of contents.
 % \end{function}
-% 
+%
 % \begin{function}{\dateformat}
 %     Used to print the date.
 % \end{function}
-% 
+%
 % \vskip 1ex\DescribeEnv{ack}
 %     The \verb+ack+ environment is used to create acknowledge page.
 %     \begin{verbatim}
@@ -682,14 +682,14 @@
 %         <content>
 %     \end{ack}
 %     \end{verbatim}
-% 
+%
 % \begin{function}{\bibliography}
 %     \begin{syntax}
 %     \cs{bibliography}\Arg{.bib file}
 %     \end{syntax}
 %     Used to create bibliography page.
 % \end{function}
-% 
+%
 % \vskip 1ex\DescribeEnv{appendix}
 %     The \verb+appendix+ environment is for appendix of course. Used like this:
 %     \begin{verbatim}
@@ -704,20 +704,20 @@
 %     <content>
 %     \end{verbatim}
 % \end{function}
-% 
+%
 % \begin{function}{\listoffigures,\listoftables}
 %     Create the index for all the figures and tables separately.
 % \end{function}
-% 
+%
 % \vskip 1ex\DescribeEnv{publications}
-%     The \verb+publications+ environment is where you list all of your published thesises. It's usually putted in appendix. 
+%     The \verb+publications+ environment is where you list all of your published thesises. It's usually putted in appendix.
 %     \begin{verbatim}
 %     \begin{publications}
 %         \item <thesis>
 %         <...>
 %     \end{publications}
 %     \end{verbatim}
-% 
+%
 % \begin{function}{\TurnOffTabFontSetting,\TurnOnTabFontSetting}
 %     This template has set the font size and line spread for all the tables which makes it's impossible to change font format temporary in one table.  So it provides these to command to temporary disable or enable default font setting in table. For example, if you want to change table font size, you can use the code like this:
 %     \begin{verbatim}
@@ -741,8 +741,8 @@
 %
 % \section{Simple example}\label{sec:simple-example}
 % Below is a simple example of using this template. For a complete example see \texttt{itecreport-en-example.tex} which will generate \href{https://github.com/hust-latex/itecreport/raw/master/itecreport/itecreport-en-example.pdf}{\texttt{itecreport-en-example.pdf}}.
-% 
-% \iffalse 
+%
+% \iffalse
 %<*driver>
 % \fi
 \begin{lstlisting}[language={[LaTeX]TeX}]
@@ -752,7 +752,7 @@
 \title{your title}
 \author{your name}
 \supervisor{your supervisor} % Optional
-\date{2013}{6}{1} 
+\date{2013}{6}{1}
 
 \abstract{the abstract}
 \keywords{the keywords}
@@ -786,14 +786,14 @@
 
 \end{document}
 \end{lstlisting}
-% \iffalse 
+% \iffalse
 %</driver>
 % \fi
 %
 % \section{Introduction to some packages used in the template}
-% 
+%
 % Here's a list of some packages used in the template.
-% 
+%
 % \begin{itemize}
 %     \item \href{http://mirrors.ctan.org/help/Catalogue/entries/algorithm2e.html}{\textsf{algorithm2e}} For display algorithm.
 %     \item \href{http://mirrors.ctan.org/help/Catalogue/entries/enumitem.html}{\textsf{enumitem}} For set the style of enumerate, itemize and description environment.
@@ -1008,7 +1008,6 @@
 %    \begin{macrocode}
 \RequirePackage{geometry}
 \geometry{
-  a4paper,
   top=1.2in,
   bottom=1.2in,
   left=1in,
@@ -1023,7 +1022,7 @@
 %    \begin{macrocode}
 \RequirePackage{indentfirst}
 \setlength{\parindent}{2em}
-\setlength{\parskip}{0pt plus 2pt minus 1pt} 
+\setlength{\parskip}{0pt plus 2pt minus 1pt}
 %    \end{macrocode}
 %
 % Packages to handle color.
@@ -1115,7 +1114,7 @@
 \def\contentsnamenospace{目录}
 \def\appendixname{附录}
 \def\ITEC@listfigurename{插图索引}
-\def\ITEC@listtablename{表格索引}  
+\def\ITEC@listtablename{表格索引}
 \def\equationautorefname{公式}
 \def\footnoteautorefname{脚注}
 \def\itemautorefname~#1\null{第~#1~项\null}
@@ -1150,7 +1149,7 @@
 %    \begin{macrocode}
 %<*class-en>
 \def\ITEC@listfigurename{List of Figures}
-\def\ITEC@listtablename{List of Tables}  
+\def\ITEC@listtablename{List of Tables}
 \def\equationautorefname{Equation}
 \def\footnoteautorefname{Footnote}
 \def\itemautorefname{Item}
@@ -1283,10 +1282,10 @@
 %
 % Set the fraction of floating object. Make the fraction less crowded than default value to prevent floating object occupying too much space.
 %    \begin{macrocode}
-\renewcommand{\textfraction}{0.15} 
-\renewcommand{\topfraction}{0.85} 
-\renewcommand{\bottomfraction}{0.65} 
-\renewcommand{\floatpagefraction}{0.60} 
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.65}
+\renewcommand{\floatpagefraction}{0.60}
 %    \end{macrocode}
 %
 % \subsection{Table Style}
@@ -1415,7 +1414,7 @@
     \changefont{size=18pt}
   }
 %<class-zh>{\zhnumber{\thechapter}}
-%<class-en>{Chapter~\thechapter}  
+%<class-en>{Chapter~\thechapter}
   {1em}
   {}
 \titlespacing*{\chapter}{0pt}{0pt}{20pt}
@@ -1915,7 +1914,7 @@
     \centering
     \changefont{size=18pt}
   }
-  {\appendixname\,\thechapter} 
+  {\appendixname\,\thechapter}
   {1em}
   {}
   \ITEC@inappendixtrue
@@ -2440,7 +2439,7 @@ Content.
 itecreport
 ==========
 
-An Unofficial Technical Report Template in LaTeX for [the Internet Technology and Engineering R&D Center](http://itec.hust.edu.cn/). This template is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+An Unofficial Technical Report Template in LaTeX for [the Internet Technology and Engineering R&D Center](http://itec.hust.edu.cn/). This template is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 This template provides two class files which correspond to Chinese version and English version template separately: `itecreport-zh` and `itecreport-en`.
 
@@ -2515,11 +2514,11 @@ and version 1.3 or later is part of all distributions of LaTeX
 version 2005/12/01 or later.
 
 This work has the LPPL maintenance status `maintained'.
- 
+
 The Current Maintainer of this work is Xu Cheng.
 
 This work consists of the files itecreport.dtx and itecreport.ins
-and the derived file itecreport-zh.cls, itecreport-en.cls and 
+and the derived file itecreport-zh.cls, itecreport-en.cls and
 along with its documnet and example files.
 ```
 %READMEFILE
