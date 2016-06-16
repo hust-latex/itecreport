@@ -52,12 +52,11 @@
 \newjfontfamily\KAI{AdobeKaitiStd-Regular}
 \newjfontfamily\FANGSONG{AdobeFangsongStd-Regular}
 
-\usepackage{interfaces-LaTeX}
-\changefont{linespread=1.2}
+\linespread{1.2}\selectfont
 
 \usepackage[top=1.2in,bottom=1.2in,left=1.5in,right=1in]{geometry}
-\pdfpagewidth=\paperwidth
-\pdfpageheight=\paperheight
+\pagewidth=\paperwidth
+\pageheight=\paperheight
 
 \usepackage{color}
 \usepackage[table]{xcolor}
@@ -138,7 +137,7 @@
   {
     \bfseries
     \centering
-    \changefont{size=18pt}
+    \fontsize{18pt}{21.6pt}\selectfont
   }
   {\thepart}
   {1em}
@@ -511,7 +510,6 @@
 %     \item \href{http://mirrors.ctan.org/help/Catalogue/entries/multirow.html}{\textsf{multirow}} 用于表格中合并行。
 %     \item \href{http://mirrors.ctan.org/help/Catalogue/entries/overpic.html}{\textsf{overpic}} 用于在图片上层叠其他内容。
 %     \item \href{http://mirrors.ctan.org/help/Catalogue/entries/tabularx.html}{\textsf{tabularx}} 扩展到表格环境。
-%     \item \href{http://mirrors.ctan.org/help/Catalogue/entries/xypic.html}{\textsf{xy-pic}} 用于绘制简单图形。如需更高级功能可以使用\href{http://mirrors.ctan.org/help/Catalogue/entries/pgf.html}{\textsf{tikz}}宏包。
 %     \item \href{http://mirrors.ctan.org/help/Catalogue/entries/zhnumber.html}{\textsf{zhnumber}} 用于生成中文数字。
 % \end{itemize}
 %
@@ -804,7 +802,6 @@
 %     \item \href{http://mirrors.ctan.org/help/Catalogue/entries/multirow.html}{\textsf{multirow}} Combine multi-rows in table.
 %     \item \href{http://mirrors.ctan.org/help/Catalogue/entries/overpic.html}{\textsf{overpic}} Put something over a picture,
 %     \item \href{http://mirrors.ctan.org/help/Catalogue/entries/tabularx.html}{\textsf{tabularx}} A better table environment.
-%     \item \href{http://mirrors.ctan.org/help/Catalogue/entries/xypic.html}{\textsf{xy-pic}} To draw some picture. If you need more advanced features, use the package \href{http://mirrors.ctan.org/help/Catalogue/entries/pgf.html}{\textsf{tikz}}.
 % \end{itemize}
 %
 % \StopEventually{
@@ -998,10 +995,9 @@
 %    \end{macrocode}
 %
 % \section{Basic Format}
-% Use \href{http://mirrors.ctan.org/help/Catalogue/entries/interfaces}{\texttt{interfaces}} package to handle font size and line spread. We set global line spread to 1.2.
+% We set global line spread to 1.2.
 %    \begin{macrocode}
-\RequirePackage{interfaces-LaTeX}
-\changefont{linespread=1.2}
+\linespread{1.2}\selectfont
 %    \end{macrocode}
 %
 % Use \href{http://mirrors.ctan.org/help/Catalogue/entries/geometry}{\texttt{geometry}} package to handle paper page.
@@ -1014,8 +1010,8 @@
   right=1in,
   includefoot
 }
-\pdfpagewidth=\paperwidth
-\pdfpageheight=\paperheight
+\pagewidth=\paperwidth
+\pageheight=\paperheight
 %    \end{macrocode}
 %
 % Indent of paragraph and skip between paragraphs.
@@ -1063,7 +1059,6 @@
 %
 % Load packages for picture.
 %    \begin{macrocode}
-\RequirePackage[all]{xy}
 \RequirePackage{overpic}
 \RequirePackage{graphicx,caption,subcaption}
 %    \end{macrocode}
@@ -1338,17 +1333,17 @@
 %    \begin{macrocode}
 \AtBeginEnvironment{tabular}{
   \ifITEC@useoldtabular\else
-    \changefont{size=11pt,linespread=1.4}
+    \fontsize{11pt}{15.4pt}\selectfont
   \fi
 }
 \AtBeginEnvironment{tabularx}{
   \ifITEC@useoldtabular\else
-    \changefont{size=11pt,linespread=1.4}
+    \fontsize{11pt}{15.4pt}\selectfont
   \fi
 }
 \AtBeginEnvironment{longtable}{
   \ifITEC@useoldtabular\else
-    \changefont{size=11pt,linespread=1.4}
+    \fontsize{11pt}{15.4pt}\selectfont
   \fi
 }
 %    \end{macrocode}
@@ -1356,7 +1351,7 @@
 % \subsection{Caption Style}
 % Set caption font size as 11pt, use hang format, remove `:' after number and set the skip between context as 12pt.
 %    \begin{macrocode}
-\DeclareCaptionFont{ITEC@captionfont}{\changefont{size=11pt}}
+\DeclareCaptionFont{ITEC@captionfont}{\fontsize{11pt}{13.2pt}\selectfont}
 \DeclareCaptionLabelFormat{ITEC@caplabel}{#1~#2}
 \captionsetup{
   font=ITEC@captionfont,
@@ -1379,7 +1374,7 @@
 \definecolor{ITEC@lstmauve}{rgb}{0.58,0,0.82}
 
 \lstset{
-  basicstyle=\footnotesize\ttfamily\changefont{linespread=1}
+  basicstyle=\footnotesize\ttfamily\linespread{1}\selectfont
 %<class-zh>\FANGSONG
   ,
   keywordstyle=\color{blue}\bfseries,
@@ -1411,7 +1406,7 @@
     \bfseries
 %<class-zh>\HEI
     \centering
-    \changefont{size=18pt}
+    \fontsize{18pt}{21.6pt}\selectfont
   }
 %<class-zh>{\zhnumber{\thechapter}}
 %<class-en>{Chapter~\thechapter}
@@ -1424,7 +1419,7 @@
 %    \begin{macrocode}
 \titleformat*{\section}{\bfseries
 %<class-zh>\HEI
-\changefont{size=16pt}}
+\fontsize{16pt}{19.2pt}\selectfont}
 \titlespacing*{\section}{0pt}{18pt}{6pt}
 %    \end{macrocode}
 %
@@ -1432,7 +1427,7 @@
 %    \begin{macrocode}
 \titleformat*{\subsection}{\bfseries
 %<class-zh>\HEI
-\changefont{size=14pt}}
+\fontsize{14pt}{16.8pt}\selectfont}
 \titlespacing*{\subsection}{0pt}{12pt}{6pt}
 %    \end{macrocode}
 %
@@ -1440,7 +1435,7 @@
 %    \begin{macrocode}
 \titleformat*{\subsubsection}{\bfseries
 %<class-zh>\HEI
-\changefont{size=13pt}}
+\fontsize{13pt}{15.6pt}\selectfont}
 \titlespacing*{\subsubsection}{0pt}{12pt}{6pt}
 %    \end{macrocode}
 %
@@ -1912,7 +1907,7 @@
     \bfseries
 %<class-zh>\HEI
     \centering
-    \changefont{size=18pt}
+    \fontsize{18pt}{21.6pt}\selectfont
   }
   {\appendixname\,\thechapter}
   {1em}
