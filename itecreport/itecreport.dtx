@@ -1872,13 +1872,13 @@
 % \end{environment}
 %
 % \begin{macro}{\bibliography}
-% A command to generate bibliography page. We use \textsf{thuthesis.bst} in \href{http://mirrors.ctan.org/help/Catalogue/entries/thuthesis}{\texttt{thuthesis}} to typeset bibliography in Chinese version template. And use \href{http://mirrors.ctan.org/help/Catalogue/entries/ieeetran}{\texttt{IEEEtran}} in English version template.
+% A command to generate bibliography page. We use \textsf{thuthesis-numeric.bst} in \href{http://mirrors.ctan.org/help/Catalogue/entries/thuthesis}{\texttt{thuthesis}} to typeset bibliography in Chinese version template. And use \href{http://mirrors.ctan.org/help/Catalogue/entries/ieeetran}{\texttt{IEEEtran}} in English version template.
 %    \begin{macrocode}
 %<*class-zh>
 \def\thudot{\unskip.}
 \def\thumasterbib{[Master Thesis]}
 \def\thuphdbib{[Doctor Thesis]}
-\bibliographystyle{thuthesis}
+\bibliographystyle{thuthesis-numeric}
 %</class-zh>
 %<class-en>\bibliographystyle{IEEEtran}
 \let\ITEC@bibliography\bibliography
